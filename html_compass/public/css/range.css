@@ -1,0 +1,155 @@
+.irs.irs--round {
+    margin-top: -20px;
+}
+
+input.range-prefix {
+    padding-right: 22px;
+    width: 80px;
+}
+
+input.range-prefix.time {
+    padding-right: 35px;
+    width: 80px;
+}
+
+span.range-prefix {
+    position: absolute;
+    right: 7px;
+    top: 4px;
+    font-size: 14px;
+    color: #ccc;
+    line-height: 31px;
+}
+
+.irs--round .irs-handle {
+    border-color: var(--colorIntent-actionableFilledBackground) !important;
+}
+
+.irs--round .irs-bar {
+    background-color: var(--colorIntent-actionableFilledBackground) !important;
+}
+
+.range-container .p-relative input {
+    font-size: 14px;
+}
+
+.range-container {
+    background-color: #f3f4f7;
+}
+
+.range-container #view-result {
+    border: 1px solid #000;
+    color: #000;
+    font-weight: bold;
+}
+
+.range-container #view-result:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.range-container #download {
+    color: #333;
+}
+
+.range-container .group-right {
+    font-size: 14px;
+    color: #999;
+}
+
+.range-container .group-right .group-b div:first-child {
+    width: 75px;
+}
+
+.range-container .group-right .group-b div:last-child {
+    color: #30333a;
+    font-size: 30px;
+}
+
+.range-container input[type=radio] {
+    position: relative;
+    float: left;
+    display: block;
+}
+
+.range-container .form-type span {
+    padding: 0 0 0 15px;
+    display: block;
+    width: calc(100% - 14px);
+    float: left;
+    line-height: 1.3;
+    font-size: 14px;
+    color: #444c59;
+}
+
+.range-container input[type=radio]::before {
+    display: inline-block;
+    content: "";
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    border: 2px solid var(--colorIntent-actionableFilledBackground);
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+.range-container input[type=radio]:checked::after {
+    display: inline-block;
+    content: "";
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 50%;
+    background: var(--colorIntent-actionableFilledBackground);
+}
+
+.range-container h2 {
+    font-size: 20px;
+    color: #333;
+}
+
+.chart {
+    width: 100%;
+    background-color: transparent;
+}
+
+#chartContainer {
+    /* position: absolute; */
+    /* left: -20px;
+    right: -20px;
+    bottom: -20px;
+    top: -20px; */
+    /* top: 0; */
+    /* left: 0; */
+}
+
+#total-payment {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+#total-payment {
+    font-size: 16px;
+    color: #000;
+    font-weight: bold;
+}
+
+#total-payment span {
+    margin-bottom: 7px;
+    font-size: 30px;
+    font-weight: 600;
+    color: #30333a;
+    line-height: .7;
+    display: block;
+    width: 100%;
+    text-align: center;
+}

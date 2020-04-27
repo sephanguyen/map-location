@@ -1,0 +1,292 @@
+.form-user-action {
+    h1 {
+        text-align: center;
+        margin-bottom: 25px;
+        font-family: 'rv-font2', Arial, Helvetica, sans-serif !important;
+        font-size: 24px;
+        line-height: 32px;
+        font-weight: 500;
+        margin-top: 20px;
+    }
+    .formcol .form-control,
+    .formcol .form-control:focus {
+        border: 0;
+        border-bottom: 4px solid #e5e5e5;
+        padding: 8px 0 10px 0;
+        border-radius: 0;
+        margin: 0;
+    }
+    .btn-facebook {
+        background: #4267b2;
+        border-color: #4267b2;
+        color: #fff !important;
+    }
+    .btn-google {
+        background: #dd4b39;
+        border-color: #dd4b39;
+        color: #fff !important;
+    }
+    .btn [class*=" icon-"],
+    .btn [class^=icon-] {
+        vertical-align: middle;
+    }
+    .btn-icon .fa,
+    .btn-icon [class*=" icon-"],
+    .btn-icon [class^=icon-] {
+        font-size: 1.6em;
+        vertical-align: sub;
+        line-height: 1em;
+        margin-right: 3px;
+    }
+    .checkbox,
+    .radio {
+        padding-left: 22px;
+        margin: 0;
+        position: relative;
+        -webkit-transition: color .25s linear;
+        transition: color .25s linear;
+        font-size: 14px;
+        font-weight: 400;
+        cursor: pointer;
+    }
+    .checkbox input,
+    .radio input {
+        outline: 0 !important;
+        display: none;
+    }
+    .checkbox .icons,
+    .radio .icons {
+        color: #ddd;
+        display: block;
+        height: 20px;
+        left: 0;
+        position: absolute;
+        top: -3px;
+        text-align: center;
+        line-height: 21px;
+        font-size: 20px;
+        cursor: pointer;
+        -webkit-transition: color .2s linear;
+        transition: color .2s linear;
+    }
+    .radio .icons {
+        top: 0;
+    }
+    .checkbox .icons .first-icon,
+    .checkbox .icons .second-icon,
+    .radio .icons .first-icon,
+    .radio .icons .second-icon {
+        display: inline-table;
+        position: absolute;
+        background-color: transparent;
+        margin: 0;
+        opacity: 1;
+    }
+    .checkbox .icons .second-icon,
+    .radio .icons .second-icon {
+        opacity: 0;
+    }
+    .checkbox:hover,
+    .radio:hover {
+        -webkit-transition: color .2s linear;
+        transition: color .2s linear;
+    }
+    .checkbox:hover .first-icon,
+    .radio:hover .first-icon {
+        opacity: 0;
+    }
+    .checkbox:hover .second-icon,
+    .radio:hover .second-icon {
+        opacity: 1;
+    }
+    .checkbox.checked .icons,
+    .radio.checked .icons {
+        color: #f5891f;
+    }
+    .checkbox.checked .first-icon,
+    .radio.checked .first-icon {
+        opacity: 0;
+    }
+    .checkbox.checked .second-icon,
+    .radio.checked .second-icon {
+        opacity: 1;
+        color: #f5891f;
+        -webkit-transition: color .2s linear;
+        transition: color .2s linear;
+    }
+    .checkbox.disabled,
+    .radio.disabled {
+        cursor: default;
+        color: #ddd !important;
+    }
+    .checkbox.disabled .icons,
+    .radio.disabled .icons {
+        color: #ddd !important;
+    }
+    .checkbox.disabled .first-icon,
+    .radio.disabled .first-icon {
+        opacity: 1;
+    }
+    .checkbox.disabled .second-icon,
+    .radio.disabled .second-icon {
+        opacity: 0;
+    }
+    .checkbox.disabled.checked .icons,
+    .radio.disabled.checked .icons {
+        color: #ddd;
+    }
+    .checkbox.disabled.checked .first-icon,
+    .radio.disabled.checked .first-icon {
+        opacity: 0;
+    }
+    .checkbox.disabled.checked .second-icon,
+    .radio.disabled.checked .second-icon {
+        opacity: 1;
+        color: #d9d9d9;
+    }
+    .middleofline {
+        position: relative;
+        text-align: center;
+        display: inline-block;
+        bottom: -30px;
+        background: #f3f4f7;
+        text-transform: uppercase;
+        padding: 0 15px;
+        color: #444c59;
+        font-size: 14px;
+    }
+    .formcol .form-control,
+    .formcol .form-control:focus {
+        border: 0;
+        border-bottom: 4px solid #e5e5e5;
+        padding: 8px 0 10px 0;
+        border-radius: 0;
+        margin: 0;
+    }
+    .selectwrap {
+        position: relative;
+        overflow: hidden;
+    }
+    .selectwrap.form-control {
+        padding: 0 !important;
+    }
+    select,
+    select.form-control,
+    select:focus {
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+        border: 0 !important;
+        margin: 0;
+        height: 43px;
+        outline: 0;
+        background: 0 0 !important;
+        padding-right: 20px;
+        width: 115% !important;
+        font-size: 16px;
+        line-height: 18px;
+        transform-origin: left center;
+        transform: scale(.875);
+    }
+    .selectwrap:after {
+        content: "\f0d7";
+        font-family: FontAwesome;
+        position: absolute;
+        right: 5px;
+        top: 10px;
+        line-height: 1;
+        font-size: 16px;
+        pointer-events: none;
+    }
+    .login-by-social a button {
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        padding: 10px;
+        display: block;
+        font-weight: 600;
+        position: relative;
+        text-decoration: none!important;
+        font-size: 16px;
+        border-radius: 2px;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .07);
+    }
+    .remember-me {
+        color: rgba(68, 76, 89, .5);
+        font-size: 14px;
+    }
+}
+
+#myModal-login,
+#myModal-register {
+    .form-control {
+        background-color: transparent;
+    }
+    *:not([class*="fa-"]) {
+        font-family: 'harmonia', Arial, Helvetica, sans-serif;
+    }
+}
+
+.submit-btn {
+    font-weight: 600;
+}
+
+a[data-target="#myModal-register"],
+a[data-target="#myModal-login"],
+a.blue-green {
+    color: #337588 !important;
+    font-weight: 600;
+    line-height: 1;
+    opacity: .86;
+    font-size: 14px;
+    padding-left: 5px;
+    cursor: pointer;
+    background: transparent !important;
+    border: none;
+}
+
+p.register-p {
+    color: #444c59;
+    font-size: 14px;
+    opacity: .86;
+}
+
+button[type="button"].submit-btn {
+    height: 50px;
+}
+
+#myModal-login .modal-dialog .modal-content,
+#myModal-register .modal-dialog .modal-content,
+#myModal-forgot-pwd .modal-dialog .modal-content,
+#myModal-login .modal-dialog .modal-content input ,
+#myModal-register .modal-dialog .modal-content input ,
+#myModal-forgot-pwd .modal-dialog .modal-content input {
+  background-color: #f3f4f7; }
+
+#myModal-login .modal-dialog .close,
+#myModal-register .modal-dialog .close,
+#myModal-forgot-pwdr .modal-dialog .close, {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #fff;
+    -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+    -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 43px;
+    border: 0;
+    cursor: pointer;
+    z-index: 9999;
+    opacity: 1;
+}
+
+#myModal-forgot-pwd .modal-dialog .close {
+    line-height: 42px;
+}

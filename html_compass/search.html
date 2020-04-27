@@ -1,0 +1,2157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Compass</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="public/fonts/CompassSans-Regular.woff" as="font" />
+    <link href="public/fonts/CompassSans-Medium.woff" as="font" />
+    <link href="public/fonts/CompassSerif-Regular.woff" as="font" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen"
+        href="public/assets/bootstrap/css/bootstrap.min.css?version=4.1.3" />
+    <link rel="stylesheet" type="text/css" media="screen" href="public/css/util-classes.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="public/css/normalize.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="public/css/c0.gz.css" />
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="public/css/styles.css" /> -->
+    <link rel="stylesheet" type="text/css" media="screen" href="public/css/cx.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="public/css/index.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="public/css/style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
+        integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+        crossorigin="" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.Default.css" />
+    <script src="public/js/jquery.js?version=3.1.3"></script>
+    <style>
+        #map-internal {
+            min-height: 100px;
+            width: 100%;
+            height: 100%;
+            height: 400px;
+        }
+
+        #pop-up-map {
+            width: 500px;
+            height: 450px;
+        }
+
+        .modal-backdrop {
+            z-index: -1;
+        }
+
+        .labels_map {
+            background: #e49e5d;
+            font-size: 12px;
+            border-radius: 4px;
+            padding: 5px 7px;
+            overflow: initial !important;
+            box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.35);
+            color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="map-internal"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="wrapper">
+        <link rel="stylesheet" type="text/css" media="screen" href="public/scss/search.css" />
+        <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+        <nav class="uc-corpNav">
+            <?php require("./navbar.php"); ?>
+        </nav>
+
+        <main id="search">
+            <div class="header">
+                <div class="wrapper">
+                    <form action="#" id="form-query">
+                        <div class="container-fluid d-flex w-100 p-relative">
+                            <div for="#" class="d-block w-100 mb-0 pt-2 pb-2 search-wrap">
+                                <div class="d-inline-block">
+                                    <svg class="uc-searchBarOmnibox-searchIcon ml-2 mr-0" viewBox="0 0 25 25">
+                                        <path
+                                            d="M17.8724934,19.3481945 C17.4662,18.9419012 17.4643401,18.2850294 17.8746847,17.8746847 L17.8746847,17.8746847 C18.2821883,17.4671811 18.9468084,17.4711073 19.3481945,17.8724934 L23.7796805,22.3039794 C24.1859739,22.7102728 24.1878338,23.3671445 23.7774892,23.7774892 L23.7774892,23.7774892 C23.3699856,24.1849928 22.7053655,24.1810666 22.3039794,23.7796805 L17.8724934,19.3481945 L17.8724934,19.3481945 Z">
+                                        </path>
+                                        <path
+                                            d="M19.7391304,9.86956522 C19.7391304,4.41875486 15.3203756,0 9.86956522,0 C4.41875486,0 0,4.41875486 0,9.86956522 C0,15.3203756 4.41875486,19.7391304 9.86956522,19.7391304 C15.3203756,19.7391304 19.7391304,15.3203756 19.7391304,9.86956522 Z M2,9.86956522 C2,5.52332436 5.52332436,2 9.86956522,2 C14.2158061,2 17.7391304,5.52332436 17.7391304,9.86956522 C17.7391304,14.2158061 14.2158061,17.7391304 9.86956522,17.7391304 C5.52332436,17.7391304 2,14.2158061 2,9.86956522 Z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div class="d-inline-block">
+                                    <ul class="uc-searchBarOmnibox-choices d-flex hide w-auto">
+                                    </ul>
+                                </div>
+                                <div class="d-inline-block">
+                                    <span class="uc-searchBarOmnibox-moreChoicesCount d-none">
+                                        <span class="count"></span>
+                                        <span>more</span>
+                                    </span>
+                                </div>
+                                <div class="d-inline-block">
+                                    <div class="search-field-wrap w-100">
+                                        <input type="text" id="search-field" class="form-control border-0"
+                                            placeholder="Nhập từ khóa...">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="search-results" class="d-none">
+                                <div class="is-empty-field-search p-2 pl-4 pt-4">
+                                    <div class="d-flex align-items-start">
+                                        <img src="public/theme/baseline-error_outline-24px.svg" alt="Info Error"
+                                            class="mr-2">
+                                        <div class="w-100">
+                                            <h4>
+                                                <strong>Thử nhập bất cứ thứ gì bạn muốn để tìm kiếm</strong>. Ví dụ...
+                                            </h4>
+                                            <div class="row mt-3">
+                                                <div class="col-6">
+                                                    <h5 class="uc-listingCard-subtitle" style="color: #c7c3c3">Tìm kiếm
+                                                        theo
+                                                        chức năng</h5>
+                                                    <p class="examples">
+                                                        <span class="bg-light mr-1">Tập thể hình</span>
+                                                        <span class="bg-light mr-1">Tập thể hình</span>
+                                                        <span class="bg-light mr-1">Tập thể hình</span>
+                                                        <span class="bg-light mr-1">Tập thể hình</span>
+                                                        <span class="bg-light mr-1">Tập thể hình</span>
+                                                    </p>
+                                                </div>
+                                                <div class="col-6">
+                                                    <h5 class="uc-listingCard-subtitle" style="color: #c7c3c3">Tìm kiếm
+                                                        theo địa
+                                                        điểm</h5>
+                                                    <p class="examples">
+                                                        <span class="bg-light mr-1">Trường đại học bách khoa TP.
+                                                            HCM</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="results">
+                                    <div class="group loading d-none">
+                                        <p class="title">Loading...</p>
+                                    </div>
+                                    <div class="group">
+                                        <p class="title">Neighborhoods</p>
+                                        <ul>
+                                            <li class="result">
+                                                Circle <strong>Control</strong>
+                                            </li>
+                                            <li class="result">
+                                                House white
+                                            </li>
+                                            <li class="result">
+                                                Gara Circle
+                                            </li>
+                                            <li class="result">
+                                                Socks Tins
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="group">
+                                        <p class="title">Keywords Search</p>
+                                        <ul>
+                                            <li class="result">
+                                                <img src="public/theme/search.svg" alt="Tìm kiếm"
+                                                    class="uc-searchBarOmnibox-searchIcon" />
+                                                Tìm kiếm với từ khóa là "<span id="search-keyword"
+                                                    class="font-weight-bold"></span>"
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button"
+                                class="uc-searchBarOmnibox-save d-none font-weight-bold cx-nakedBtn cx-nakedBtn--sm"
+                                title="Save Search">
+                                Save
+                            </button>
+                            <button type="button"
+                                class="uc-searchBarOmnibox-clear d-none font-weight-bold cx-nakedBtn cx-nakedBtn--sm ml-2 mr-4"
+                                title="Clear Search">
+                                Clear
+                            </button>
+                            <button id="show-filter-mobile" class="btn d-block d-sm-none bg-transparent none-after p-3">
+                                Filters
+                            </button>
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                                data-target="#myModal">Open Modal</button>
+
+
+                            <div
+                                class="fillter border border-top-0 border-bottom-0 border-right-0 d-flex align-items-center justify-content-center">
+                                <div class="dropdown" id="price">
+                                    <button class="btn dropdown-toggle dropdown-toggle-cs bg-transparent p-3 none-after"
+                                        type="button" id="dropdownMenuButton1">
+                                        Price
+                                        <svg class="uc-searchBar-toggleMenuIcon">
+                                            <use xlink:href="#cx-icon-chevronDown_16x16"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="dropdown-menu pl-4 pr-4 pt-3 pb-3"
+                                        aria-labelledby="dropdownMenuButton1">
+                                        <div class="d-flex align-items-top justify-content-center">
+                                            <span>
+                                                <input type="text" placeholder="Min"
+                                                    class="cx-textField min cx-textField--sm">
+                                                <p class="cx-formElement-errorMessage d-none">Min must be lower than the
+                                                    max</p>
+                                            </span>
+                                            <span class="mr-2 ml-2 to">To</span>
+                                            <span>
+                                                <input type="text" placeholder="Max"
+                                                    class="cx-textField max cx-textField--sm">
+                                                <p class="cx-formElement-errorMessage d-none">Min must be lower than the
+                                                    max</p>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown" id="beds">
+                                    <button class="btn dropdown-toggle-cs dropdown-toggle bg-transparent p-3"
+                                        type="button" id="dropdownMenuButton2">
+                                        Beds
+                                        <svg class="uc-searchBar-toggleMenuIcon">
+                                            <use xlink:href="#cx-icon-chevronDown_16x16"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="dropdown-menu p-3 pt-4">
+                                        <div class="d-flex align-items-center justify-content-center">
+                                            <label for="#" class="ml-1 mr-1 text-truncate">
+                                                <input type="checkbox" name="beds[]" value="studio"
+                                                    class="cx-checkboxField cx-checkboxField--sm">
+                                                <span>Studio</span>
+                                            </label>
+                                            <label for="#" class="ml-1 mr-1 text-truncate">
+                                                <input type="checkbox" name="beds[]" value="alcove studio"
+                                                    class="cx-checkboxField cx-checkboxField--sm">
+                                                <span class="text-truncate">Alcove Studio</span>
+                                            </label>
+                                            <label for="#" class="ml-1 mr-1 text-truncate">
+                                                <input type="checkbox" name="beds[]" value="1"
+                                                    class="cx-checkboxField cx-checkboxField--sm">
+                                                <span>1</span>
+                                            </label>
+                                            <label for="#" class="ml-1 mr-1 text-truncate">
+                                                <input type="checkbox" name="beds[]" value="2"
+                                                    class="cx-checkboxField cx-checkboxField--sm">
+                                                <span>2</span>
+                                            </label>
+                                            <label for="#" class="ml-1 mr-1 text-truncate">
+                                                <input type="checkbox" name="beds[]" value="3"
+                                                    class="cx-checkboxField cx-checkboxField--sm">
+                                                <span>3</span>
+                                            </label>
+                                            <label for="#" class="ml-1 mr-1 text-truncate">
+                                                <input type="checkbox" name="beds[]" value="4"
+                                                    class="cx-checkboxField cx-checkboxField--sm">
+                                                <span>4</span>
+                                            </label>
+                                            <label for="#" class="ml-1 mr-1 text-truncate">
+                                                <input type="checkbox" name="beds[]" value="5+"
+                                                    class="cx-checkboxField cx-checkboxField--sm">
+                                                <span>5+</span>
+                                            </label>
+                                            <label for="#" class="ml-1 mr-1 text-truncate">
+                                                <input type="checkbox" name="beds[]" value="5+"
+                                                    class="cx-checkboxField cx-checkboxField--sm">
+                                                <span class="text-truncate">Include Unknown</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown" id="baths">
+                                    <button class="btn dropdown-toggle dropdown-toggle-cs bg-transparent p-3"
+                                        type="button">
+                                        Baths
+                                        <svg class="uc-searchBar-toggleMenuIcon">
+                                            <use xlink:href="#cx-icon-chevronDown_16x16"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="dropdown-menu pl-4 pr-4 pb-3">
+                                        <div
+                                            class="searchFilter-select d-flex align-items-center justify-content-center text-truncate">
+                                            <label class="searchFilter-radio mb-0 mr-2">
+                                                <input class="cx-radioField cx-radioField--sm" type="radio" name="bath"
+                                                    value="any">
+                                                <span class="searchFilter-label">Any</span>
+                                            </label>
+                                            <label class="searchFilter-radio mb-0 mr-2">
+                                                <input class="cx-radioField cx-radioField--sm" type="radio" name="bath"
+                                                    value="1+">
+                                                <span class="searchFilter-label">1+</span>
+                                            </label>
+
+                                            <label class="searchFilter-radio mb-0 mr-2">
+                                                <input class="cx-radioField cx-radioField--sm" type="radio" name="bath"
+                                                    value="1.5+">
+                                                <span class="searchFilter-label">1.5+</span>
+                                            </label>
+
+                                            <label class="searchFilter-radio mb-0 mr-2">
+                                                <input class="cx-radioField cx-radioField--sm" type="radio" name="bath"
+                                                    value="2+">
+                                                <span class="searchFilter-label">2+</span>
+                                            </label>
+
+                                            <label class="searchFilter-radio mb-0 mr-2">
+                                                <input class="cx-radioField cx-radioField--sm" type="radio" name="bath"
+                                                    value="3+">
+                                                <span class="searchFilter-label">3+</span>
+                                            </label>
+
+                                            <label class="searchFilter-radio mb-0 mr-2">
+                                                <input class="cx-radioField cx-radioField--sm" type="radio" name="bath"
+                                                    value="4+">
+                                                <span class="searchFilter-label">4+</span>
+                                            </label>
+                                            <label class="searchFilter-checkbox mb-0">
+                                                <input class="cx-checkboxField cx-checkboxField--sm" type="checkbox"
+                                                    name="includeUnknownBath" value="includeUnknown">
+                                                <span class="searchFilter-label">Include Unknown</span>
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="locations">
+                                    <button class="btn dropdown-toggle dropdown-toggle-cs bg-transparent p-3"
+                                        type="button">
+                                        Locations
+                                        <svg class="uc-searchBar-toggleMenuIcon">
+                                            <use xlink:href="#cx-icon-chevronDown_16x16"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <div class="uc-searchBarLocations-section">
+                                            Neighborhoods
+                                        </div>
+                                        <div class="accordion" id="accordionExample">
+                                            <div class="card checkbox-toggle border-0 w-100">
+                                                <div class="card-header d-flex align-items-center w-100"
+                                                    id="headingOne">
+                                                    <h2 class="mb-0 w-100">
+                                                        <button class="btn btn-link p-0 text-dark font-weight-bold "
+                                                            type="button" data-toggle="collapse"
+                                                            data-target="#collapseOne" aria-expanded="true"
+                                                            aria-controls="collapseOne">
+                                                            Collier Country
+                                                        </button>
+                                                    </h2>
+                                                    <div class="ml-auto d-flex align-items-center hide tools">
+                                                        <p class="small mb-0 text-truncate">
+                                                            <small class="count mr-1">5</small>
+                                                            <small>/</small>
+                                                            <small class="total ml-1">165</small>
+                                                        </p>
+                                                        <button class="btn btn-link text-dark p-0 ml-4 btn-clear">
+                                                            <small class=" font-weight-bold">clear</small>
+                                                        </button>
+                                                        <svg class="uc-searchBarTooAccordionMenuItem-headlineIcon is-spun ml-2"
+                                                            data-toggle="collapse" data-target="#collapseOne"
+                                                            aria-expanded="true" aria-controls="collapseOne">
+                                                            <use xlink:href="#cx-icon-chevronRight_16x16"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div id="collapseOne" class="collapse w-auto"
+                                                    aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                    <div class="card-body w-100">
+                                                        <?php for($i = 0; $i < 10; $i++){ ?>
+                                                        <div class="row mb-2">
+                                                            <div class="col-4">
+                                                                <label for="#" class="d-block">
+                                                                    <input type="checkbox"
+                                                                        value="All Collier Country <?php echo $i; ?>"
+                                                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm" />
+                                                                    <span class="font-weight-normal">All Collier
+                                                                        Country</span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <label for="#" class="d-block">
+                                                                    <input type="checkbox"
+                                                                        value="Aqualane Shores <?php echo $i; ?>"
+                                                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm" />
+                                                                    <span class="font-weight-normal">Aqualane
+                                                                        Shores</span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <label for="#" class="d-block">
+                                                                    <input type="checkbox"
+                                                                        value="Audubon Country Club <?php echo $i; ?>"
+                                                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm" />
+                                                                    <span class="font-weight-normal">Audubon Country
+                                                                        Club</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <?php } ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card checkbox-toggle border-0 w-100">
+                                                <div class="card-header d-flex align-items-center w-100"
+                                                    id="headingTwo">
+                                                    <h2 class="mb-0">
+                                                        <button
+                                                            class="btn btn-link collapsed  p-0 text-dark font-weight-bold"
+                                                            type="button" data-toggle="collapse"
+                                                            data-target="#collapseTwo" aria-expanded="false"
+                                                            aria-controls="collapseTwo">
+                                                            Lee Country
+                                                        </button>
+                                                    </h2>
+                                                    <div class="ml-auto d-flex align-items-center hide tools">
+                                                        <p class="small mb-0 text-truncate">
+                                                            <small class="count mr-1">5</small>
+                                                            <small>/</small>
+                                                            <small class="total ml-1">165</small>
+                                                        </p>
+                                                        <button class="btn btn-link text-dark p-0 ml-4 btn-clear">
+                                                            <small class=" font-weight-bold">clear</small>
+                                                        </button>
+                                                        <svg class="uc-searchBarTooAccordionMenuItem-headlineIcon is-spun ml-2"
+                                                            data-toggle="collapse" data-target="#collapseOne"
+                                                            aria-expanded="true" aria-controls="collapseOne">
+                                                            <use xlink:href="#cx-icon-chevronRight_16x16"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                                    data-parent="#accordionExample">
+                                                    <div class="card-body w-100">
+                                                        <?php for($i = 0; $i < 10; $i++){ ?>
+                                                        <div class="row mb-2">
+                                                            <div class="col-4">
+                                                                <label for="#" class="d-block">
+                                                                    <input type="checkbox"
+                                                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm" />
+                                                                    <span class="font-weight-normal">All Collier
+                                                                    </span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <label for="#" class="d-block">
+                                                                    <input type="checkbox"
+                                                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm" />
+                                                                    <span class="font-weight-normal">Aqualane
+                                                                        Shores</span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <label for="#" class="d-block">
+                                                                    <input type="checkbox"
+                                                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm" />
+                                                                    <span class="font-weight-normal">Audubon Country
+                                                                        Club</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <?php } ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card checkbox-toggle border-0 w-100">
+                                                <div class="card-header d-flex align-items-center w-100"
+                                                    id="headingThree">
+                                                    <h2 class="mb-0">
+                                                        <button
+                                                            class="btn btn-link collapsed  p-0 text-dark font-weight-bold"
+                                                            type="button" data-toggle="collapse"
+                                                            data-target="#collapseThree" aria-expanded="false"
+                                                            aria-controls="collapseThree">
+                                                            Charlotte Country
+                                                        </button>
+                                                    </h2>
+                                                    <div class="ml-auto d-flex align-items-center hide tools">
+                                                        <p class="small mb-0 text-truncate">
+                                                            <small class="count mr-1">5</small>
+                                                            <small>/</small>
+                                                            <small class="total ml-1">165</small>
+                                                        </p>
+                                                        <button class="btn btn-link text-dark p-0 ml-4 btn-clear">
+                                                            <small class=" font-weight-bold">clear</small>
+                                                        </button>
+                                                        <svg class="uc-searchBarTooAccordionMenuItem-headlineIcon is-spun ml-2"
+                                                            data-toggle="collapse" data-target="#collapseOne"
+                                                            aria-expanded="true" aria-controls="collapseOne">
+                                                            <use xlink:href="#cx-icon-chevronRight_16x16"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                                    data-parent="#accordionExample">
+                                                    <div class="uc-searchBarLocations-section">
+                                                        Custom Boundaries
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uc-searchBarLocations-section">
+                                                Custom Boundaries
+                                            </div>
+                                            <div class="card checkbox-toggle border-0 w-100">
+                                                <div class="card-header d-flex align-items-center w-100"
+                                                    id="headingFourth">
+                                                    <h2 class="mb-0">
+                                                        <button
+                                                            class="btn btn-link collapsed  p-0 text-dark font-weight-bold"
+                                                            type="button" data-toggle="collapse"
+                                                            data-target="#collapseFourth" aria-expanded="false"
+                                                            aria-controls="collapseFourth">
+                                                            Saved Boundaries
+                                                        </button>
+                                                    </h2>
+                                                    <div class="ml-auto d-flex align-items-center hide tools">
+                                                        <p class="small mb-0">
+                                                            <span class="count mr-1">5</span>/<span
+                                                                class="total ml-1">165</span>
+                                                        </p>
+                                                        <button class="btn btn-link text-dark p-0 ml-4 btn-clear">
+                                                            <small class=" font-weight-bold">clear</small>
+                                                        </button>
+                                                        <svg class="uc-searchBarTooAccordionMenuItem-headlineIcon is-spun ml-2"
+                                                            data-toggle="collapse" data-target="#collapseOne"
+                                                            aria-expanded="true" aria-controls="collapseOne">
+                                                            <use xlink:href="#cx-icon-chevronRight_16x16"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div id="collapseFourth" class="collapse text-center pt-3 pb-1"
+                                                    aria-labelledby="headingFourth" data-parent="#accordionExample">
+                                                    <img class="uc-searchBarCustomBounds-noBoundsImg"
+                                                        src="public/theme/Empty_state_graphic.png">
+                                                    <div class="uc-searchBarCustomBounds-noBoundsLabel textIntent-body">
+                                                        No custom boundaries have been saved
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown" id="filters">
+                                    <button class="btn dropdown-toggle  dropdown-toggle-cs bg-transparent p-3"
+                                        type="button">
+                                        Filters
+                                        <svg class="uc-searchBar-toggleMenuIcon">
+                                            <use xlink:href="#cx-icon-chevronDown_16x16"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="dropdown-menu pl-4 pr-4 pt-3 pb-3">
+                                        <div class="w-100 mt-2 d-block">
+                                            <p>Compass Listings</p>
+                                            <div class="d-grid w-100">
+                                                <label for="#" class="text-truncate">
+                                                    <input type="checkbox"
+                                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm">
+                                                    Pocket Listing
+                                                </label>
+                                                <label for="#" class="text-truncate">
+                                                    <input type="checkbox"
+                                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm">
+                                                    Pocket Listing
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="w-100 d-block mt-3">
+                                            <p>Status</p>
+                                            <div class="d-grid w-100">
+                                                <label for="#" class="text-truncate">
+                                                    <input type="checkbox"
+                                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm">
+                                                    Active
+                                                </label>
+                                                <label for="#" class="text-truncate">
+                                                    <input type="checkbox"
+                                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm">
+                                                    Coming Soon
+                                                </label>
+                                                <label for="#" class="text-truncate">
+                                                    <input type="checkbox"
+                                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm">
+                                                    Contingent
+                                                </label>
+                                                <label for="#" class="text-truncate">
+                                                    <input type="checkbox"
+                                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm">
+                                                    Pending
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="w-100 d-block mt-3">
+                                            <p>Open House</p>
+                                            <div class="w-auto d-inline-block">
+                                                <select name="" id="" placeholder="Select Dates"
+                                                    class="form-control rounded-0">
+                                                    <option value="today">Today</option>
+                                                    <option value="tomorrow">Tomorrow</option>
+                                                    <option value="next-7-days">Next 7 Days</option>
+                                                    <option value="custom">Custom</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="w-100 d-block mt-3">
+                                            <p>Square Footage</p>
+                                            <div class="w-auto d-inline-block">
+                                                <div class="d-flex align-items-center">
+                                                    <input type="text" class="form-control rounded-0" placeholder="Min">
+                                                    <span class="ml-2 mr-2">To</span>
+                                                    <input type="text" class="form-control rounded-0" placeholder="Max">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="w-100 d-block mt-3">
+                                            <p>Maximum Monthly Fees</p>
+                                            <div class="w-auto d-inline-block">
+                                                <input type="text" class="form-control rounded-0 d-inline-block"
+                                                    placeholder="Max">
+                                            </div>
+                                        </div>
+                                        <div class="w-100 d-block mt-3">
+                                            <p>Features</p>
+                                            <div class="d-grid w-100">
+                                                <label for="#" class="text-truncate">
+                                                    <input type="checkbox"
+                                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm">
+                                                    Fitness Center
+                                                </label>
+                                                <label for="#" class="text-truncate">
+                                                    <input type="checkbox"
+                                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm">
+                                                    Elevator
+                                                </label>
+                                                <label for="#" class="text-truncate">
+                                                    <input type="checkbox"
+                                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm">
+                                                    Doorman
+                                                </label>
+                                                <label for="#" class="text-truncate">
+                                                    <input type="checkbox"
+                                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm">
+                                                    Parking
+                                                </label>
+                                            </div>
+                                            <div class="d-grid w-100">
+                                                <label for="#" class="text-truncate">
+                                                    <input type="checkbox"
+                                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm">
+                                                    Garage
+                                                </label>
+                                                <label for="#" class="text-truncate">
+                                                    <input type="checkbox"
+                                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm">
+                                                    Central AC
+                                                </label>
+                                                <label for="#" class="text-truncate">
+                                                    <input type="checkbox"
+                                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm">
+                                                    Pool
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-6" id="items">
+                        <div class="queries uc-lolActionBar pl-3 pr-2">
+                            <div class="w-auto mr-3">
+                                <div
+                                    class="uc-lolActionBar-checkAllComboBtn cx-enclosedBtnGroup js-lolAction-checkAll dropdown">
+                                    <div
+                                        class="uc-lolActionBar-checkAll d-none d-sm-inline-block  cx-enclosedBtn cx-enclosedBtn--sm">
+                                        <input type="checkbox"
+                                            class="uc-lolActionBar-checkAllField cx-checkboxField cx-checkboxField--sm">
+                                    </div>
+                                    <button
+                                        class="uc-lolActionBar-checkAllDropdownBtn none-after d-none d-sm-block cx-enclosedBtn cx-enclosedBtn--sm dropdown-toggle"
+                                        data-toggle="dropdown" aria-haspopup="true">
+                                        <svg class="cx-btn-icon">
+                                            <use xlink:href="#cx-icon-chevronDown_16x16"></use>
+                                        </svg>
+                                    </button>
+                                    <button
+                                        class="uc-lolActionBar-checkAllDropdownBtn pr-3 d-sm-none d-block pl-3 none-after cx-enclosedBtn cx-enclosedBtn--sm dropdown-toggle"
+                                        data-toggle="dropdown" aria-haspopup="true">
+                                        <svg class="cx-btn-icon" xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24">
+                                            <path d="M0 0h24v24H0z" fill="none" />
+                                            <path
+                                                d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+                                        </svg>
+                                    </button>
+                                    <ul
+                                        class="uc-lolActionBar-checkAllDropdownMenu uc-lolAction-menu cx-flyoutMenu cx-flyoutMenu--lg dropdown-menu">
+                                        <li class="cx-flyoutMenu-item select-all">
+                                            Select all on this page
+                                        </li>
+                                        <li class="cx-flyoutMenu-item clear">
+                                            Clear selected
+                                            <span
+                                                class="badge badge-danger cx-flyoutMenu-accessory text-light small"></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <button class="cx-enclosedBtn cx-enclosedBtn--sm d-none d-xs-none text-truncate"
+                                id="save-listing">
+                                <svg class="cx-btn-icon cx-btn-icon--left">
+                                    <use xlink:href="#cx-icon-star_16x16" ng-href="#cx-icon-star_16x16"></use>
+                                </svg>
+                                <span class="uc-lolAction-label font-weight-bold">Save Listings</span>
+                            </button>
+                            <div class="uc-lolActionBar-results textIntent-caption2 pl-2 pr-2">
+                                <div class="uc-lolActionBar-resultsClipper text-truncate">
+                                    <small>42,145 Results</small>
+                                    <span class="border ml-2 mr-2 border-left-0 selected-count d-none"></span>
+                                    <small class="selected-count d-none"><span></span> Selected</small>
+                                </div>
+                            </div>
+                            <div class="w-auto ml-auto">
+                                <ul class="uc-lolActionBar-builtInActions">
+                                    <li
+                                        class="uc-lolAction cx-selectField-wrapper p-relative js-lolAction-sortMenu--expanded">
+                                        <button class="cx-enclosedBtn cx-enclosedBtn--sm d-block d-md-none">
+                                            <svg class="cx-btn-icon">
+                                                <use xlink:href="#cx-icon-sort_16x16"></use>
+                                            </svg>
+                                        </button>
+                                        <select class="cx-selectField cx-selectField--sm uc-lolAction-hiddenSelect">
+                                            <option label="Default Sort" value="object:245" selected="selected">Default
+                                                Sort
+                                            </option>
+                                            <option label="Updated Date - Most Recent" value="object:246">Updated Date -
+                                                Most
+                                                Recent
+                                            </option>
+                                            <option label="Price - Low to High" value="object:247">Price - Low to High
+                                            </option>
+                                            <option label="Price - High to Low" value="object:248">Price - High to Low
+                                            </option>
+                                            <option label="Listed Date - Most Recent" value="object:249">Listed Date -
+                                                Most
+                                                Recent
+                                            </option>
+                                            <option label="Address - A to Z" value="object:250">Address - A to Z
+                                            </option>
+                                            <option label="Neighborhood - A to Z" value="object:251">Neighborhood - A to
+                                                Z
+                                            </option>
+                                        </select>
+                                    </li>
+                                    <li
+                                        class="uc-lolAction d-none d-sm-inline-block uc-lolAction--grouped js-lolAction-viewToggle ml-2">
+                                        <button id="show-grid" data-toggle="tooltip" data-placement="bottom"
+                                            title="Xem dạng lưới"
+                                            class="cx-enclosedBtn cx-enclosedBtn--sm cx-groupedBtn cx-groupedBtn--first is-active">
+                                            <svg class="cx-btn-icon">
+                                                <use xlink:href="#cx-icon-3x3Grid_16x16"></use>
+                                            </svg>
+                                        </button>
+                                    </li>
+                                    <li
+                                        class="uc-lolAction d-none d-sm-inline-block uc-lolAction--grouped js-lolAction-viewToggle mr-2">
+                                        <button id="show-table" data-toggle="tooltip" data-placement="bottom"
+                                            title="Xem dạng bảng"
+                                            class="cx-enclosedBtn cx-enclosedBtn--sm cx-groupedBtn cx-groupedBtn--last">
+                                            <svg class="cx-btn-icon">
+                                                <use xlink:href="#cx-icon-stackedLines_16x16"></use>
+                                            </svg>
+                                        </button>
+                                    </li>
+                                    <li
+                                        class="uc-lolAction d-none d-sm-inline-block uc-lolAction--grouped js-lolAction-supportViewToggle uc-lolAction--first uc-lolAction--last">
+                                        <button id="hide-map" data-toggle="tooltip" data-placement="bottom"
+                                            title="Bản đồ"
+                                            class="cx-enclosedBtn cx-enclosedBtn--sm cx-groupedBtn cx-groupedBtn--first cx-groupedBtn--last is-active">
+                                            <svg class="cx-btn-icon">
+                                                <use xlink:href="#cx-icon-foldedMap_16x16"
+                                                    ng-href="#cx-icon-foldedMap_16x16">
+                                                </use>
+                                            </svg>
+                                        </button>
+                                    </li>
+                                    <li
+                                        class="uc-lolAction d-sm-none ml-2 d-inline-block uc-lolAction--menu js-lolAction-viewOptionsMenu dropdown">
+                                        <button data-toggle="dropdown"
+                                            class="cx-enclosedBtn cx-enclosedBtn--sm dropdown-toggle none-after"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            <svg class="cx-btn-icon">
+                                                <use xlink:href="#cx-icon-3x3Grid_16x16"></use>
+                                            </svg>
+                                        </button>
+                                        <ul
+                                            class="uc-lolAction-menu uc-lolAction-menu--viewOptions cx-flyoutMenu dropdown-menu">
+                                            <li class="cx-flyoutMenu-item" id="card-view">
+                                                Card View
+                                            </li>
+                                            <li class="cx-flyoutMenu-item" id="table-view">
+                                                Table View
+                                            </li>
+                                            <li class="cx-flyoutMenu-divider"></li>
+                                            <li class="cx-flyoutMenu-item uc-lolAction" id="map-view">
+                                                Map
+                                            </li>
+
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="collections bg-white pt-4">
+                            <div class="container-fluid" id="collections-wrap">
+                                <div class="row" id="items-collections">
+                                </div>
+                                <div class="uc-tableView-footer d-block d-sm-none">
+                                    <div class="uc-lolPaginator">
+                                        <div class="uc-lolPaginator-panel">
+                                            <div class="cx-paginator">
+                                                <div class="cx-paginator-section">
+                                                    <button class="cx-paginator-btn cx-paginator-btn--first">
+                                                        First
+                                                    </button>
+
+                                                    <button class="cx-paginator-btn cx-paginator-btn--previous">
+                                                        Previous
+                                                    </button>
+
+                                                    <div class="cx-paginator-text-wrapper">
+                                                        Page
+                                                        <span class="cx-paginator-text">1</span>
+                                                        of
+                                                        <span class="cx-paginator-text">1,756</span>
+                                                    </div>
+
+                                                    <button class="cx-paginator-btn cx-paginator-btn--next">
+                                                        Next
+                                                    </button>
+
+                                                    <button class="cx-paginator-btn cx-paginator-btn--last">
+                                                        Last
+                                                    </button>
+                                                </div>
+
+                                                <div class="cx-paginator-section">
+                                                    <div class="cx-selectField-wrapper">
+                                                        <select
+                                                            class="cx-selectField ng-pristine ng-untouched ng-valid ng-not-empty">
+                                                            <option label="24" value="number:24" selected="selected">24
+                                                            </option>
+                                                            <option label="48" value="number:48">48</option>
+                                                            <option label="72" value="number:72">72</option>
+                                                            <option label="96" value="number:96">96</option>
+                                                            <option label="120" value="number:120">120</option>
+                                                        </select>
+                                                    </div>
+                                                    Per Page
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-collections d-none">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="col text-truncate">
+                                                <span class="uc-lolTable-colConfigHeader"
+                                                    title="Customize table columns"
+                                                    data-tn="lolTableHeader-link-_checkboxCol_">
+                                                    <svg class="cx-btn-icon">
+                                                        <use xlink:href="#cx-icon-gear_16x16"></use>
+                                                    </svg>
+                                                </span>
+                                            </th>
+                                            <th class="col text-truncate">Địa chỉ
+                                            </th>
+                                            <th class="col text-truncate">Khu vực lân cận</th>
+                                            <th class="col text-truncate">Giá</th>
+                                            <th class="col text-truncate">PPSF</th>
+                                            <th class="col text-truncate">Bd</th>
+                                            <th class="col text-truncate">Ba</th>
+                                            <th class="col text-truncate">HBa</th>
+                                            <th class="col text-truncate">Diện tích</th>
+                                            <th class="col text-truncate">Phí mỗi năm</th>
+                                            <th class="col text-truncate">Phí mỗi tháng</th>
+                                            <th class="col text-truncate">MLS Propert...</th>
+                                            <th class="col text-truncate">MLS Property Su...</th>
+                                            <th class="col text-truncate">Compass Pro...</th>
+                                            <th class="col text-truncate">Status</th>
+                                            <th class="col text-truncate">DOM</th>
+                                            <th class="col text-truncate">Updated Date</th>
+                                            <th class="col text-truncate">Listed Date</th>
+                                            <th class="col text-truncate">Open House</th>
+                                            <th class="col text-truncate"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="uc-tableView-footer">
+                                <div class="uc-lolPaginator">
+                                    <div class="uc-lolPaginator-panel">
+                                        <div class="cx-paginator">
+                                            <div class="cx-paginator-section">
+                                                <button class="cx-paginator-btn cx-paginator-btn--first">
+                                                    First
+                                                </button>
+
+                                                <button class="cx-paginator-btn cx-paginator-btn--previous">
+                                                    Previous
+                                                </button>
+
+                                                <div class="cx-paginator-text-wrapper">
+                                                    Page
+                                                    <span class="cx-paginator-text">1</span>
+                                                    of
+                                                    <span class="cx-paginator-text">1,756</span>
+                                                </div>
+
+                                                <button class="cx-paginator-btn cx-paginator-btn--next">
+                                                    Next
+                                                </button>
+
+                                                <button class="cx-paginator-btn cx-paginator-btn--last">
+                                                    Last
+                                                </button>
+                                            </div>
+
+                                            <div class="cx-paginator-section">
+                                                <div class="cx-selectField-wrapper">
+                                                    <select
+                                                        class="cx-selectField ng-pristine ng-untouched ng-valid ng-not-empty">
+                                                        <option label="24" value="number:24" selected="selected">24
+                                                        </option>
+                                                        <option label="48" value="number:48">48</option>
+                                                        <option label="72" value="number:72">72</option>
+                                                        <option label="96" value="number:96">96</option>
+                                                        <option label="120" value="number:120">120</option>
+                                                    </select>
+                                                </div>
+                                                Per Page
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6">
+                        <!-- <div class=" uc-lolMap--lg">
+                            <div class="group-a">
+                                <button class="uc-lol-mobileCardViewBtn cx-enclosedBtn cx-enclosedBtn--sm close-map">
+                                    <svg class="cx-btn-icon">
+                                        <use xlink:href="#cx-icon-x_16x16"></use>
+                                    </svg>
+                                </button>
+                                <button class="uc-lolRedoSearch-customBoundsBtn cx-enclosedBtn edit cx-enclosedBtn--sm"
+                                    type="button">
+                                    <svg class="uc-lolRedoSearch-redoSearchIcon cx-btn-icon">
+                                        <use xlink:href="#cx-icon-pencil_16x16"></use>
+                                    </svg>
+                                </button>
+                                <button class="uc-lolRedoSearch-redoSearchBtn cx-solidBtn cx-solidBtn--sm redo-search"
+                                    type="button">
+                                    <svg class="uc-lolRedoSearch-redoSearchIcon cx-btn-icon cx-btn-icon--left">
+                                        <use xlink:href="#cx-icon-circularArrows_16x16"></use>
+                                    </svg>
+                                    Redo search here
+                                </button>
+                                <button
+                                    class="uc-lolRedoSearch-redoSearchBtn cx-enclosedBtn cx-enclosedBtn--sm search-as d-none"
+                                    type="button">
+                                    <input
+                                        class="uc-lolRedoSearch-searchAsIMoveCheckbox cx-checkboxField cx-checkboxField--sm"
+                                        type="checkbox" id="search-as">
+                                    Search as I move
+                                </button>
+                            </div>
+                            <div class="uc-lolCustomBounds-actionBar d-none group-b">
+                                <div class="cx-enclosedBtnGroup">
+                                    <button
+                                        class="uc-lolCustomBounds-action is-active cx-groupedBtn cx-enclosedBtn cx-enclosedBtn--sm"
+                                        type="button">
+                                        <svg class="cx-btn-icon">
+                                            <use xlink:href="#cx-icon-drawingPencil_16x16"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button
+                                        class="uc-lolCustomBounds-action cx-groupedBtn cx-enclosedBtn cx-enclosedBtn--sm"
+                                        type="button">
+                                        <svg class="cx-btn-icon">
+                                            <use xlink:href="#cx-icon-gauge_16x16"></use>
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <div class="cx-enclosedBtnGroup">
+                                    <button
+                                        class="uc-lolCustomBounds-condensedSearchBtn uc-lolCustomBounds-action cx-enclosedBtn cx-enclosedBtn--sm"
+                                        type="button">
+                                        <svg class="cx-btn-icon">
+                                            <use xlink:href="#cx-icon-magnifyingGlass_16x16"></use>
+                                        </svg>
+                                    </button>
+
+                                    <div class="uc-lolCustomBounds-action uc-lolCustomBounds-jumpToAddress is-hidden">
+                                        <input
+                                            class="uc-lolCustomBounds-jumpToAddressInput cx-textField jump-to-address"
+                                            type="text" name="address" placeholder="Jump to address" autocomplete="off">
+
+                                        <div class="uc-lolCustomBounds-jumpToAddressIcon">
+                                            <svg class="uc-lolCustomBounds-magnifyingGlass">
+                                                <use xlink:href="#cx-icon-magnifyingGlass_16x16"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="cx-enclosedBtnGroup">
+                                    <button
+                                        class="uc-lolCustomBounds-action trash cx-groupedBtn cx-enclosedBtn cx-enclosedBtn--sm"
+                                        type="button">
+                                        <svg class="cx-btn-icon">
+                                            <use xlink:href="#cx-icon-trash_16x16"></use>
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <div class="cx-enclosedBtnGroup">
+                                    <button class="uc-lolCustomBounds-action done cx-solidBtn cx-solidBtn--sm"
+                                        type="button">
+                                        Done
+                                    </button>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div id='map'></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="filter-mobile">
+            <div class="menu-home active" data-id="home">
+                <div class="uc-searchBarTooMobileMenu-title p-relative">
+                    Filters
+                    <button class="uc-searchBarTooMobileMenu-closeBtn cx-nakedBtn">
+                        Done
+                    </button>
+                </div>
+                <nav class="listingTypeTabs">
+                    <a class="listingTypeTabs-tab" href="">Sales</a>
+                    <a class="listingTypeTabs-tab" href="">Rentals</a>
+                </nav>
+                <div class="uc-searchBarTooAccordionMenuItem-headline" data-href="other">
+                    <span class="uc-searchBarTooAccordionMenuItem-headlineLabel">
+                        Price, Beds and Baths
+                    </span>
+                    <span class="uc-searchBarTooAccordionMenuItem-headlineActions">
+                        <svg class="uc-searchBarTooAccordionMenuItem-headlineIcon">
+                            <use xlink:href="#cx-icon-arrowRight_16x16"></use>
+                        </svg>
+                    </span>
+                </div>
+                <div class="uc-searchBarTooAccordionMenuItem-headline" data-href="filters">
+                    <span class="uc-searchBarTooAccordionMenuItem-headlineLabel">
+                        More Filters
+                    </span>
+                    <span class="uc-searchBarTooAccordionMenuItem-headlineActions">
+                        <svg class="uc-searchBarTooAccordionMenuItem-headlineIcon">
+                            <use xlink:href="#cx-icon-arrowRight_16x16"></use>
+                        </svg>
+                    </span>
+                </div>
+                <div class="uc-searchBarTooAccordionMenuItem-headline" data-href="locations">
+                    <span class="uc-searchBarTooAccordionMenuItem-headlineLabel">
+                        Locations
+                    </span>
+                    <span class="uc-searchBarTooAccordionMenuItem-headlineActions">
+                        <svg class="uc-searchBarTooAccordionMenuItem-headlineIcon">
+                            <use xlink:href="#cx-icon-arrowRight_16x16"></use>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+            <div data-id="other" class="uc-searchBarTooMobileMenu-level1 uc-slidingMenu-content pt-5">
+                <div class="uc-searchBarTooMobileMenu-title">
+                    <div class="uc-searchBarLocations-navigation" data-href="home">
+                        <svg class="uc-searchBarLocations-prevLevelBtn">
+                            <use xlink:href="#cx-icon-arrowLeft_16x16"></use>
+                        </svg>
+                        <span class="uc-searchBarLocations-navigationText">
+                            Price, Beds and Baths
+                        </span>
+                    </div>
+                    <button class="uc-searchBarTooMobileMenu-closeBtn cx-nakedBtn">
+                        Done
+                    </button>
+                </div>
+                <div class="uc-searchBarPriceRange uc-searchBarTooSection mt-2">
+                    <div class="uc-searchBarTooSection-title d-block mb-2">Price</div>
+                    <div class="uc-searchBarTooFilters">
+
+                        <div type="currency" class="ng-pristine ng-untouched ng-valid ng-empty ng-valid-custom-element">
+                            <div class="ngNonBindable">
+                                <div class="search-range">
+
+                                    <div class="search-range-min">
+                                        <div placeholder="Min" name="min">
+                                            <div class="ngNonBindable">
+                                                <div>
+
+                                                    <input class="cx-textField cx-textField--sm" type="text" name="min"
+                                                        placeholder="Min">
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="search-range-to">To</div>
+
+                                    <div class="search-range-max">
+                                        <div placeholder="Max" name="max">
+                                            <div class="ngNonBindable">
+                                                <div>
+
+                                                    <input class="cx-textField cx-textField--sm" type="text" name="max"
+                                                        placeholder="Max">
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="uc-searchBarBeds u-displayBlock">
+
+                    <div label="Bedrooms" name="bedrooms">
+                        <div class="ngNonBindable">
+                            <div class="searchFilter-section">
+                                <div class="searchFilter-section-title d-block font-weight-bold small mb-2">Bedrooms
+                                </div>
+                                <div class="searchFilter-section-container ">
+                                    <div class="searchFilter-select">
+
+                                        <label class="searchFilter-checkbox">
+                                            <input class="cx-checkboxField cx-checkboxField--sm" type="checkbox"
+                                                value="0">
+                                            <span class="searchFilter-label">Studio</span>
+                                        </label><label class="searchFilter-checkbox">
+                                            <input class="cx-checkboxField cx-checkboxField--sm" type="checkbox"
+                                                value="1">
+                                            <span class="searchFilter-label">Alcove Studio</span>
+                                        </label><label class="searchFilter-checkbox">
+                                            <input class="cx-checkboxField cx-checkboxField--sm" type="checkbox"
+                                                value="2">
+                                            <span class="searchFilter-label">1</span>
+                                        </label><label class="searchFilter-checkbox">
+                                            <input class="cx-checkboxField cx-checkboxField--sm" type="checkbox"
+                                                value="3">
+                                            <span class="searchFilter-label">2</span>
+                                        </label><label class="searchFilter-checkbox">
+                                            <input class="cx-checkboxField cx-checkboxField--sm" type="checkbox"
+                                                value="4">
+                                            <span class="searchFilter-label">3</span>
+                                        </label><label class="searchFilter-checkbox">
+                                            <input class="cx-checkboxField cx-checkboxField--sm" type="checkbox"
+                                                value="5">
+                                            <span class="searchFilter-label">4</span>
+                                        </label><label class="searchFilter-checkbox">
+                                            <input class="cx-checkboxField cx-checkboxField--sm" type="checkbox"
+                                                value="6">
+                                            <span class="searchFilter-label">5+</span>
+                                        </label>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="uc-searchBarBaths u-displayBlock">
+                    <div label="Bathrooms" name="bathrooms">
+                        <div class="ngNonBindable">
+                            <div class="searchFilter-section">
+                                <div class="searchFilter-section-title d-block font-weight-bold small mb-2">Bathrooms
+                                </div>
+                                <div class="searchFilter-section-container ">
+                                    <div class="searchFilter-select">
+                                        <label class="searchFilter-radio">
+                                            <input class="cx-radioField cx-radioField--sm" type="radio"
+                                                name="Bathrooms0.801152652224175" value="any">
+                                            <span class="searchFilter-label">Any</span>
+                                        </label>
+                                        <label class="searchFilter-radio">
+                                            <input class="cx-radioField cx-radioField--sm" type="radio"
+                                                name="Bathrooms0.801152652224175" value="0">
+                                            <span class="searchFilter-label">1+</span>
+                                        </label><label class="searchFilter-radio">
+                                            <input class="cx-radioField cx-radioField--sm" type="radio"
+                                                name="Bathrooms0.801152652224175" value="1">
+                                            <span class="searchFilter-label">1.5+</span>
+                                        </label><label class="searchFilter-radio">
+                                            <input class="cx-radioField cx-radioField--sm" type="radio"
+                                                name="Bathrooms0.801152652224175" value="2">
+                                            <span class="searchFilter-label">2+</span>
+                                        </label><label class="searchFilter-radio">
+                                            <input class="cx-radioField cx-radioField--sm" type="radio"
+                                                name="Bathrooms0.801152652224175" value="3">
+                                            <span class="searchFilter-label">3+</span>
+                                        </label><label class="searchFilter-radio">
+                                            <input class="cx-radioField cx-radioField--sm" type="radio"
+                                                name="Bathrooms0.801152652224175" value="4">
+                                            <span class="searchFilter-label">4+</span>
+                                        </label>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-id="filters" class="uc-searchBarTooMobileMenu-level1 uc-slidingMenu-content pt-5">
+                <div class="uc-searchBarTooMobileMenu-title">
+                    <div class="uc-searchBarLocations-navigation" data-href="home">
+                        <svg class="uc-searchBarLocations-prevLevelBtn">
+                            <use xlink:href="#cx-icon-arrowLeft_16x16"></use>
+                        </svg>
+                        <span class="uc-searchBarLocations-navigationText">
+                            More Filters
+                        </span>
+                    </div>
+                    <button class="uc-searchBarTooMobileMenu-closeBtn cx-nakedBtn">
+                        Done
+                    </button>
+                </div>
+                <div config="filtersPanel.filters">
+                    <div class="uc-searchBarTooAccordionMenu has-stickyHeaders pl-4 pr-4">
+                        <div class="w-100 mt-2 d-block">
+                            <p>Compass Listings</p>
+                            <div class="d-grid w-100">
+                                <label for="#" class="text-truncate">
+                                    <input type="checkbox"
+                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm">
+                                    Pocket Listing
+                                </label>
+                                <label for="#" class="text-truncate">
+                                    <input type="checkbox"
+                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm">
+                                    Pocket Listing
+                                </label>
+                            </div>
+                        </div>
+                        <div class="w-100 d-block mt-3">
+                            <p>Status</p>
+                            <div class="d-grid w-100">
+                                <label for="#" class="text-truncate">
+                                    <input type="checkbox"
+                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm">
+                                    Active
+                                </label>
+                                <label for="#" class="text-truncate">
+                                    <input type="checkbox"
+                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm">
+                                    Coming Soon
+                                </label>
+                                <label for="#" class="text-truncate">
+                                    <input type="checkbox"
+                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm">
+                                    Contingent
+                                </label>
+                                <label for="#" class="text-truncate">
+                                    <input type="checkbox"
+                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm">
+                                    Pending
+                                </label>
+                            </div>
+                        </div>
+                        <div class="w-100 d-block mt-3">
+                            <p>Open House</p>
+                            <div class="w-auto d-inline-block">
+                                <select name="" id="" placeholder="Select Dates" class="form-control rounded-0">
+                                    <option value="today">Today</option>
+                                    <option value="tomorrow">Tomorrow</option>
+                                    <option value="next-7-days">Next 7 Days</option>
+                                    <option value="custom">Custom</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="w-100 d-block mt-3">
+                            <p>Square Footage</p>
+                            <div class="w-auto d-inline-block">
+                                <div class="d-flex align-items-center">
+                                    <input type="text" class="form-control rounded-0" placeholder="Min">
+                                    <span class="ml-2 mr-2">To</span>
+                                    <input type="text" class="form-control rounded-0" placeholder="Max">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-100 d-block mt-3">
+                            <p>Maximum Monthly Fees</p>
+                            <div class="w-auto d-inline-block">
+                                <input type="text" class="form-control rounded-0 d-inline-block" placeholder="Max">
+                            </div>
+                        </div>
+                        <div class="w-100 d-block mt-3">
+                            <p>Features</p>
+                            <div class="d-grid w-100">
+                                <label for="#" class="text-truncate">
+                                    <input type="checkbox"
+                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm">
+                                    Fitness Center
+                                </label>
+                                <label for="#" class="text-truncate">
+                                    <input type="checkbox"
+                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm">
+                                    Elevator
+                                </label>
+                                <label for="#" class="text-truncate">
+                                    <input type="checkbox"
+                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm">
+                                    Doorman
+                                </label>
+                                <label for="#" class="text-truncate">
+                                    <input type="checkbox"
+                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm">
+                                    Parking
+                                </label>
+                            </div>
+                            <div class="d-grid w-100">
+                                <label for="#" class="text-truncate">
+                                    <input type="checkbox"
+                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm">
+                                    Garage
+                                </label>
+                                <label for="#" class="text-truncate">
+                                    <input type="checkbox"
+                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm">
+                                    Central AC
+                                </label>
+                                <label for="#" class="text-truncate">
+                                    <input type="checkbox"
+                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm">
+                                    Pool
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-id="locations" class="uc-searchBarTooMobileMenu-level1 uc-slidingMenu-content pt-5">
+                <div class="uc-searchBarTooMobileMenu-title">
+                    <div class="uc-searchBarLocations-navigation" data-href="home">
+                        <svg class="uc-searchBarLocations-prevLevelBtn">
+                            <use xlink:href="#cx-icon-arrowLeft_16x16"></use>
+                        </svg>
+                        <span class="uc-searchBarLocations-navigationText">
+                            Locations
+                        </span>
+                    </div>
+                    <button class="uc-searchBarTooMobileMenu-closeBtn cx-nakedBtn">
+                        Done
+                    </button>
+                </div>
+                <div include-mobile="{level: 1, category: 'Locations'}">
+                    <div class="uc-searchBarLocations-neighborhood">
+                        <div class="uc-searchBarLocations-section">
+                            Neighborhoods
+                        </div>
+                        <div class="uc-searchBarTooAccordionMenuItem-headline" data-href="amazon">
+                            <span class="uc-searchBarTooAccordionMenuItem-headlineLabel">
+                                Collier County
+                            </span>
+                            <span class="uc-searchBarTooAccordionMenuItem-headlineActions">
+                                <svg class="uc-searchBarTooAccordionMenuItem-headlineIcon">
+                                    <use xlink:href="#cx-icon-arrowRight_16x16"></use>
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="uc-searchBarTooAccordionMenuItem-headline" data-href="amazon">
+                            <span class="uc-searchBarTooAccordionMenuItem-headlineLabel">
+                                Lee County
+                            </span>
+                            <span class="uc-searchBarTooAccordionMenuItem-headlineActions">
+                                <svg class="uc-searchBarTooAccordionMenuItem-headlineIcon">
+                                    <use xlink:href="#cx-icon-arrowRight_16x16"></use>
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="uc-searchBarTooAccordionMenuItem-headline" data-href="amazon">
+                            <span class="uc-searchBarTooAccordionMenuItem-headlineLabel">
+                                Charlotte County
+                            </span>
+                            <span class="uc-searchBarTooAccordionMenuItem-headlineActions">
+                                <svg class="uc-searchBarTooAccordionMenuItem-headlineIcon">
+                                    <use xlink:href="#cx-icon-arrowRight_16x16"></use>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="uc-searchBarCustomBounds">
+                        <div class="uc-searchBarLocations-section">
+                            Custom Boundaries
+                        </div>
+                        <div class="uc-searchBarTooAccordionMenu has-stickyHeaders">
+                            <div class="uc-searchBarCustomBounds-toggle uc-searchBarTooAccordionMenuItem">
+                                <div class="uc-searchBarTooAccordionMenuItem-headline" data-toggle="collapse"
+                                    data-target="#collapseLast" aria-expanded="false" aria-controls="collapseLast">
+                                    <span class="uc-searchBarTooAccordionMenuItem-headlineLabel">
+                                        Saved Boundaries
+                                    </span>
+
+                                    <span class="uc-searchBarTooAccordionMenuItem-headlineActions">
+                                        <span class="uc-searchBarTooAccordionMenuItem-filterControl">
+                                        </span>
+
+                                        <svg class="uc-searchBarTooAccordionMenuItem-headlineIcon" style="">
+                                            <use xlink:href="#cx-icon-chevronRight_16x16"></use>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="uc-searchBarTooAccordionMenuItemSections uc-searchBarTooAccordionMenuItemSections--innerShadowed collapse"
+                                    id="collapseLast">
+                                    <div class="uc-searchBarCustomBounds-emptyState">
+                                        <div class="uc-searchBarCustomBounds-noBoundsPrompt">
+                                            <div class="uc-searchBarCustomBounds-noBoundsLabel textIntent-body">
+                                                No custom boundaries have been saved
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div data-id="amazon" class="uc-searchBarTooMobileMenu-level1 uc-slidingMenu-content pt-5">
+                <div class="uc-searchBarTooMobileMenu-title">
+                    <div class="uc-searchBarLocations-navigation" data-href="locations">
+                        <svg class="uc-searchBarLocations-prevLevelBtn">
+                            <use xlink:href="#cx-icon-arrowLeft_16x16"></use>
+                        </svg>
+                        <span class="uc-searchBarLocations-navigationText">
+                            Amazon
+                        </span>
+                    </div>
+                    <button class="uc-searchBarTooMobileMenu-closeBtn cx-nakedBtn">
+                        Done
+                    </button>
+                </div>
+                <div class="p-2">
+                    <div class="container-fluid pt-2">
+                        <?php for($i = 0; $i < 10; $i++){ ?>
+                        <div class="row mb-2">
+                            <div class="col-6">
+                                <label for="#" class="d-block">
+                                    <input type="checkbox" value="All Collier Country <?php echo $i; ?>"
+                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm" />
+                                    <span class="font-weight-normal small">All Collier Country</span>
+                                </label>
+                            </div>
+                            <div class="col-6">
+                                <label for="#" class="d-block">
+                                    <input type="checkbox" value="Aqualane Shores <?php echo $i; ?>"
+                                        class="uc-searchBarTooToggle-input cx-checkboxField cx-checkboxField--sm" />
+                                    <span class="font-weight-normal small">Aqualane Shores</span>
+                                </label>
+                            </div>
+                        </div>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <?php require_once("./search-icon.php"); ?>
+
+        <script>
+            window.items = [{
+                id: "1",
+                label: "LISTED BY COMPASS",
+                logo: "https://uc-frontend-assets.compass.com/listing-assets/latest/img/compliance/complianceNapmls.png",
+                slides: [{
+                    img: "./public/images/c6c2e753f1f8a9fb1f8506f4ba1e19f79d5d4cd7.jpg",
+                    alt: ""
+                },
+                {
+                    img: "./public/images/2b258ba71369cce987e05014982780c1f4dee130.jpg",
+                    alt: ""
+                }
+                ],
+                title: "Căn hộ diện tích 70m2, dự án Park Lengend Tân Bình",
+                subTitle: "Chevy Chase DC",
+                price: "69 triệu/m2",
+                metas: {
+                    bd: "5",
+                    ba: "5",
+                    hb: "3",
+                    sf: "13,000"
+                },
+                location: {
+                    lat: 10.791370,
+                    lng: 106.692830
+                },
+                locationPolygon: [
+                    { lat: 10.05415, lng: 105.267103 },
+                    { lat: 10.054149, lng: 105.267109 },
+                    { lat: 10.054154, lng: 105.266317 },
+                    { lat: 10.05352, lng: 105.265954 }
+                ]
+            },
+            {
+                id: "2",
+                label: "LISTED BY COMPASS",
+                logo: "https://uc-frontend-assets.compass.com/listing-assets/latest/img/compliance/complianceNapmls.png",
+                slides: [{
+                    img: "./public/images/c6c2e753f1f8a9fb1f8506f4ba1e19f79d5d4cd7.jpg",
+                    alt: ""
+                },
+                {
+                    img: "./public/images/2b258ba71369cce987e05014982780c1f4dee130.jpg",
+                    alt: ""
+                }
+                ],
+                title: "5320 27th Street Northwest",
+                subTitle: "Chevy Chase DC",
+                price: "69 triệu/m2",
+                metas: {
+                    bd: "5",
+                    ba: "5",
+                    hb: "3",
+                    sf: "13,000"
+                },
+                location: {
+                    lat: 10.806313,
+                    lng: 106.709000
+                },
+                locationPolygon: [
+                    { lat: 10.05415, lng: 105.267103 },
+                    { lat: 10.054149, lng: 105.267109 },
+                    { lat: 10.054154, lng: 105.266317 },
+                    { lat: 10.05352, lng: 105.265954 }
+                ]
+            },
+            {
+                id: "2",
+                label: "LISTED BY COMPASS",
+                logo: "https://uc-frontend-assets.compass.com/listing-assets/latest/img/compliance/complianceNapmls.png",
+                slides: [{
+                    img: "./public/images/c6c2e753f1f8a9fb1f8506f4ba1e19f79d5d4cd7.jpg",
+                    alt: ""
+                },
+                {
+                    img: "./public/images/2b258ba71369cce987e05014982780c1f4dee130.jpg",
+                    alt: ""
+                }
+                ],
+                title: "5320 27th Street Northwest",
+                subTitle: "Chevy Chase DC",
+                price: "69 triệu/m2",
+                metas: {
+                    bd: "5",
+                    ba: "5",
+                    hb: "3",
+                    sf: "13,000"
+                },
+                location: {
+                    lat: 10.795521,
+                    lng: 106.712432
+                },
+                locationPolygon: [
+                    { lat: 10.05415, lng: 105.267103 },
+                    { lat: 10.054149, lng: 105.267109 },
+                    { lat: 10.054154, lng: 105.266317 },
+                    { lat: 10.05352, lng: 105.265954 }
+                ]
+            },
+            {
+                id: "2",
+                label: "LISTED BY COMPASS",
+                logo: "https://uc-frontend-assets.compass.com/listing-assets/latest/img/compliance/complianceNapmls.png",
+                slides: [{
+                    img: "./public/images/c6c2e753f1f8a9fb1f8506f4ba1e19f79d5d4cd7.jpg",
+                    alt: ""
+                },
+                {
+                    img: "./public/images/2b258ba71369cce987e05014982780c1f4dee130.jpg",
+                    alt: ""
+                }
+                ],
+                title: "5320 27th Street Northwest",
+                subTitle: "Chevy Chase DC",
+                price: "69 triệu/m2",
+                metas: {
+                    bd: "5",
+                    ba: "5",
+                    hb: "3",
+                    sf: "13,000"
+                },
+                location: {
+                    lat: 10.833903,
+                    lng: 106.754507
+                },
+                locationPolygon: [
+                    { lat: 10.05415, lng: 105.267103 },
+                    { lat: 10.054149, lng: 105.267109 },
+                    { lat: 10.054154, lng: 105.266317 },
+                    { lat: 10.05352, lng: 105.265954 }
+                ]
+            },
+            {
+                id: "2",
+                label: "LISTED BY COMPASS",
+                logo: "https://uc-frontend-assets.compass.com/listing-assets/latest/img/compliance/complianceNapmls.png",
+                slides: [{
+                    img: "./public/images/c6c2e753f1f8a9fb1f8506f4ba1e19f79d5d4cd7.jpg",
+                    alt: ""
+                },
+                {
+                    img: "./public/images/2b258ba71369cce987e05014982780c1f4dee130.jpg",
+                    alt: ""
+                }
+                ],
+                title: "5320 27th Street Northwest",
+                subTitle: "Chevy Chase DC",
+                price: "69 triệu/m2",
+                metas: {
+                    bd: "5",
+                    ba: "5",
+                    hb: "3",
+                    sf: "13,000"
+                },
+                location: {
+                    lat: 10.807809,
+                    lng: 106.721820
+                },
+                locationPolygon: [
+                    { lat: 10.05415, lng: 105.267103 },
+                    { lat: 10.054149, lng: 105.267109 },
+                    { lat: 10.054154, lng: 105.266317 },
+                    { lat: 10.05352, lng: 105.265954 }
+                ]
+            },
+            {
+                id: "2",
+                label: "LISTED BY COMPASS",
+                logo: "https://uc-frontend-assets.compass.com/listing-assets/latest/img/compliance/complianceNapmls.png",
+                slides: [{
+                    img: "./public/images/c6c2e753f1f8a9fb1f8506f4ba1e19f79d5d4cd7.jpg",
+                    alt: ""
+                },
+                {
+                    img: "./public/images/2b258ba71369cce987e05014982780c1f4dee130.jpg",
+                    alt: ""
+                }
+                ],
+                title: "5320 27th Street Northwest",
+                subTitle: "Chevy Chase DC",
+                price: "69 triệu/m2",
+                metas: {
+                    bd: "5",
+                    ba: "5",
+                    hb: "3",
+                    sf: "13,000"
+                },
+                location: {
+                    lat: 10.808295,
+                    lng: 106.690286
+                },
+                locationPolygon: [
+                    { lat: 10.05415, lng: 105.267103 },
+                    { lat: 10.054149, lng: 105.267109 },
+                    { lat: 10.054154, lng: 105.266317 },
+                    { lat: 10.05352, lng: 105.265954 }
+                ]
+            },
+            {
+                id: "2",
+                label: "LISTED BY COMPASS",
+                logo: "https://uc-frontend-assets.compass.com/listing-assets/latest/img/compliance/complianceNapmls.png",
+                slides: [{
+                    img: "./public/images/c6c2e753f1f8a9fb1f8506f4ba1e19f79d5d4cd7.jpg",
+                    alt: ""
+                },
+                {
+                    img: "./public/images/2b258ba71369cce987e05014982780c1f4dee130.jpg",
+                    alt: ""
+                }
+                ],
+                title: "5320 27th Street Northwest",
+                subTitle: "Chevy Chase DC",
+                price: "69 triệu/m2",
+                metas: {
+                    bd: "5",
+                    ba: "5",
+                    hb: "3",
+                    sf: "13,000"
+                },
+                location: {
+                    lat: 10.791392,
+                    lng: 106.692931
+                },
+                locationPolygon: [
+                    { lat: 10.05415, lng: 105.267103 },
+                    { lat: 10.054149, lng: 105.267109 },
+                    { lat: 10.054154, lng: 105.266317 },
+                    { lat: 10.05352, lng: 105.265954 }
+                ]
+            },
+            {
+                id: "2",
+                label: "LISTED BY COMPASS",
+                logo: "https://uc-frontend-assets.compass.com/listing-assets/latest/img/compliance/complianceNapmls.png",
+                slides: [{
+                    img: "./public/images/c6c2e753f1f8a9fb1f8506f4ba1e19f79d5d4cd7.jpg",
+                    alt: ""
+                },
+                {
+                    img: "./public/images/2b258ba71369cce987e05014982780c1f4dee130.jpg",
+                    alt: ""
+                }
+                ],
+                title: "5320 27th Street Northwest",
+                subTitle: "Chevy Chase DC",
+                price: "69 triệu/m2",
+                metas: {
+                    bd: "5",
+                    ba: "5",
+                    hb: "3",
+                    sf: "13,000"
+                },
+                location: {
+                    lat: 10.819412,
+                    lng: 106.705648
+                },
+                locationPolygon: [
+                    { lat: 10.05415, lng: 105.267103 },
+                    { lat: 10.054149, lng: 105.267109 },
+                    { lat: 10.054154, lng: 105.266317 },
+                    { lat: 10.05352, lng: 105.265954 }
+                ]
+            },
+            {
+                id: "2",
+                label: "LISTED BY COMPASS",
+                logo: "https://uc-frontend-assets.compass.com/listing-assets/latest/img/compliance/complianceNapmls.png",
+                slides: [{
+                    img: "./public/images/c6c2e753f1f8a9fb1f8506f4ba1e19f79d5d4cd7.jpg",
+                    alt: ""
+                },
+                {
+                    img: "./public/images/2b258ba71369cce987e05014982780c1f4dee130.jpg",
+                    alt: ""
+                }
+                ],
+                title: "5320 27th Street Northwest",
+                subTitle: "Chevy Chase DC",
+                price: "69 triệu/m2",
+                metas: {
+                    bd: "5",
+                    ba: "5",
+                    hb: "3",
+                    sf: "13,000"
+                },
+                location: {
+                    lat: 10.819708,
+                    lng: 106.700372
+                },
+                locationPolygon: [
+                    { lat: 10.05415, lng: 105.267103 },
+                    { lat: 10.054149, lng: 105.267109 },
+                    { lat: 10.054154, lng: 105.266317 },
+                    { lat: 10.05352, lng: 105.265954 }
+                ]
+            },
+            {
+                id: "2",
+                label: "LISTED BY COMPASS",
+                logo: "https://uc-frontend-assets.compass.com/listing-assets/latest/img/compliance/complianceNapmls.png",
+                slides: [{
+                    img: "./public/images/c6c2e753f1f8a9fb1f8506f4ba1e19f79d5d4cd7.jpg",
+                    alt: ""
+                },
+                {
+                    img: "./public/images/2b258ba71369cce987e05014982780c1f4dee130.jpg",
+                    alt: ""
+                }
+                ],
+                title: "5320 27th Street Northwest",
+                subTitle: "Chevy Chase DC",
+                price: "69 triệu/m2",
+                metas: {
+                    bd: "5",
+                    ba: "5",
+                    hb: "3",
+                    sf: "13,000"
+                }
+            },
+            {
+                id: "2",
+                label: "LISTED BY COMPASS",
+                logo: "https://uc-frontend-assets.compass.com/listing-assets/latest/img/compliance/complianceNapmls.png",
+                slides: [{
+                    img: "./public/images/c6c2e753f1f8a9fb1f8506f4ba1e19f79d5d4cd7.jpg",
+                    alt: ""
+                },
+                {
+                    img: "./public/images/2b258ba71369cce987e05014982780c1f4dee130.jpg",
+                    alt: ""
+                }
+                ],
+                title: "5320 27th Street Northwest",
+                subTitle: "Chevy Chase DC",
+                price: "$11,750,000",
+                metas: {
+                    bd: "5",
+                    ba: "5",
+                    hb: "3",
+                    sf: "13,000"
+                }
+            },
+            {
+                id: "2",
+                label: "LISTED BY COMPASS",
+                logo: "https://uc-frontend-assets.compass.com/listing-assets/latest/img/compliance/complianceNapmls.png",
+                slides: [{
+                    img: "./public/images/c6c2e753f1f8a9fb1f8506f4ba1e19f79d5d4cd7.jpg",
+                    alt: ""
+                },
+                {
+                    img: "./public/images/2b258ba71369cce987e05014982780c1f4dee130.jpg",
+                    alt: ""
+                }
+                ],
+                title: "5320 27th Street Northwest",
+                subTitle: "Chevy Chase DC",
+                price: "$11,750,000",
+                metas: {
+                    bd: "5",
+                    ba: "5",
+                    hb: "3",
+                    sf: "13,000"
+                }
+            },
+            {
+                id: "2",
+                label: "LISTED BY COMPASS",
+                logo: "https://uc-frontend-assets.compass.com/listing-assets/latest/img/compliance/complianceNapmls.png",
+                slides: [{
+                    img: "./public/images/c6c2e753f1f8a9fb1f8506f4ba1e19f79d5d4cd7.jpg",
+                    alt: ""
+                },
+                {
+                    img: "./public/images/2b258ba71369cce987e05014982780c1f4dee130.jpg",
+                    alt: ""
+                }
+                ],
+                title: "5320 27th Street Northwest",
+                subTitle: "Chevy Chase DC",
+                price: "$11,750,000",
+                metas: {
+                    bd: "5",
+                    ba: "5",
+                    hb: "3",
+                    sf: "13,000"
+                }
+            },
+            {
+                id: "2",
+                label: "LISTED BY COMPASS",
+                logo: "https://uc-frontend-assets.compass.com/listing-assets/latest/img/compliance/complianceNapmls.png",
+                slides: [{
+                    img: "./public/images/c6c2e753f1f8a9fb1f8506f4ba1e19f79d5d4cd7.jpg",
+                    alt: ""
+                },
+                {
+                    img: "./public/images/2b258ba71369cce987e05014982780c1f4dee130.jpg",
+                    alt: ""
+                }
+                ],
+                title: "5320 27th Street Northwest",
+                subTitle: "Chevy Chase DC",
+                price: "$11,750,000",
+                metas: {
+                    bd: "5",
+                    ba: "5",
+                    hb: "3",
+                    sf: "13,000"
+                }
+            },
+            {
+                id: "2",
+                label: "LISTED BY COMPASS",
+                logo: "https://uc-frontend-assets.compass.com/listing-assets/latest/img/compliance/complianceNapmls.png",
+                slides: [{
+                    img: "./public/images/c6c2e753f1f8a9fb1f8506f4ba1e19f79d5d4cd7.jpg",
+                    alt: ""
+                },
+                {
+                    img: "./public/images/2b258ba71369cce987e05014982780c1f4dee130.jpg",
+                    alt: ""
+                }
+                ],
+                title: "5320 27th Street Northwest",
+                subTitle: "Chevy Chase DC",
+                price: "$11,750,000",
+                metas: {
+                    bd: "5",
+                    ba: "5",
+                    hb: "3",
+                    sf: "13,000"
+                }
+            },
+            {
+                id: "2",
+                label: "LISTED BY COMPASS",
+                logo: "https://uc-frontend-assets.compass.com/listing-assets/latest/img/compliance/complianceNapmls.png",
+                slides: [{
+                    img: "./public/images/c6c2e753f1f8a9fb1f8506f4ba1e19f79d5d4cd7.jpg",
+                    alt: ""
+                },
+                {
+                    img: "./public/images/2b258ba71369cce987e05014982780c1f4dee130.jpg",
+                    alt: ""
+                }
+                ],
+                title: "5320 27th Street Northwest",
+                subTitle: "Chevy Chase DC",
+                price: "$11,750,000",
+                metas: {
+                    bd: "5",
+                    ba: "5",
+                    hb: "3",
+                    sf: "13,000"
+                }
+            },
+            {
+                id: "2",
+                label: "LISTED BY COMPASS",
+                logo: "https://uc-frontend-assets.compass.com/listing-assets/latest/img/compliance/complianceNapmls.png",
+                slides: [{
+                    img: "./public/images/c6c2e753f1f8a9fb1f8506f4ba1e19f79d5d4cd7.jpg",
+                    alt: ""
+                },
+                {
+                    img: "./public/images/2b258ba71369cce987e05014982780c1f4dee130.jpg",
+                    alt: ""
+                }
+                ],
+                title: "5320 27th Street Northwest",
+                subTitle: "Chevy Chase DC",
+                price: "$11,750,000",
+                metas: {
+                    bd: "5",
+                    ba: "5",
+                    hb: "3",
+                    sf: "13,000"
+                }
+            },
+            ];
+
+            var clusterStyles = [
+                {
+                    textColor: 'white',
+                    url: 'path/to/smallclusterimage.png',
+                    height: 50,
+                    width: 50
+                },
+                {
+                    textColor: 'white',
+                    url: 'path/to/mediumclusterimage.png',
+                    height: 50,
+                    width: 50
+                },
+                {
+                    textColor: 'white',
+                    url: 'path/to/largeclusterimage.png',
+                    height: 50,
+                    width: 50
+                }
+            ];
+
+            function initMap() {
+
+                const locations = items.map(value => value['location']).filter(value => value !== undefined);
+
+                var infowindow = new google.maps.InfoWindow();
+
+
+                // var map = new google.maps.Map(document.getElementById('map'), {
+                //     zoom: 13,
+                //     center: { lat: 10.808295, lng: 106.690286 },
+                //     mapTypeId: 'terrain'
+                // });
+
+                var map = L.map('map', {
+                    center: L.latLng(10.808295, 106.690286),
+                    zoom: 13,
+                });
+
+
+
+
+
+
+                var markers = locations.map(function (location, i) {
+                    // let marker = new HTMLMarker({
+                    //     latlng: location,
+                    //     map,
+                    //     html: `<div class="labels_map" >${items[i].price}</div>`
+                    // });
+
+                    // marker.addListener("click", () => {
+                    //     console.log('abc')
+                    //     alert("Partyin Partyin Yeah!");
+                    // });
+
+                    let marker = new google.maps.Marker({
+                        position: location,
+                        label: items[i].price
+                    });
+                    google.maps.event.addListener(marker, 'mouseover', function () {
+                        infowindow.setContent('<div class="container"><div class="row"><div class="col-sm-8"><img src="' + items[i].logo + '"></img></div> <div class="col-sm-4">' +
+                            '<strong>' + items[i].title + '</strong> </div></div></div>');
+                        console.log(this)
+
+                        infowindow.open(map, this);
+                    });
+
+                    google.maps.event.addListener(marker, 'mouseout', function () {
+                        infowindow.close();
+                    });
+
+                    google.maps.event.addListener(marker, 'click', function () {
+                        const { locationPolygon } = items[i];
+                        console.log(locationPolygon)
+                        let center = locationPolygon.reduce(
+                            (initCenter, value) => {
+                                return {
+                                    lat: initCenter.lat + value.lat,
+                                    lng: initCenter.lng + value.lng
+                                };
+                            },
+                            { lat: 0, lng: 0 }
+                        );
+
+                        center = {
+                            lat: center.lat / locationPolygon.length,
+                            lng: center.lng / locationPolygon.length
+                        };
+
+                        var map = new google.maps.Map(document.getElementById('map-internal'), {
+                            zoom: 17,
+                            center: { lat: center.lat, lng: center.lng },
+                            mapTypeId: 'terrain'
+                        });
+
+                        const arrCoords = locationPolygon.map(value => {
+                            return new google.maps.LatLng(value.lat, value.lng);
+                        });
+
+                        polygon = new google.maps.Polygon({
+                            editable: false,
+                            paths: arrCoords,
+                            strokeColor: '#FF0000',
+                            strokeOpacity: 0.8,
+                            strokeWeight: 2,
+                            fillColor: '#FF0000',
+                            fillOpacity: 0.35,
+                            map: map,
+                            draggable: true,
+                            geodesic: true
+                        });
+                        $('#myModal').modal('show');
+                    });
+                    return marker;
+                });
+
+
+
+                var mcOptions = {
+                    gridSize: 50,
+                    styles: clusterStyles,
+                    maxZoom: 15
+                };
+
+                var mcg = L.markerClusterGroup({
+                    chunkedLoading: true,
+                    //singleMarkerMode: true,
+                    spiderfyOnMaxZoom: false
+                });
+                var markerCluster = new MarkerClusterer(map, markers,
+                    { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+
+            }
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-marker-clusterer/1.0.0/markerclusterer.js">
+        </script>
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXuf_blSK3DMKMGENzIUNo9vtsvO_HOB0&callback=initMap"></script>
+
+        <script src='https://unpkg.com/popper.js/dist/umd/popper.min.js'></script>
+        <script src="public/assets/bootstrap/js/bootstrap.min.js?version=4.1.3"></script>
+        <script src="public/js/main.js"></script>
+        <script src="./public/js/listing.js"></script>
+        <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
+            integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+            crossorigin=""></script>
+        <script src="https://unpkg.com/leaflet.markercluster@1.3.0/dist/leaflet.markercluster.js"></script>
+
+        <script src="public/js/flickity.min.js"></script>
+        <script src="https://unpkg.com/flickity-fade@1/flickity-fade.js"></script>
+        <script src="public/js/search.js"></script>
+</body>
+
+
+</html>

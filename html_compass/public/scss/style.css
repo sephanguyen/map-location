@@ -1,0 +1,1326 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: 'Compass Sans', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  overflow-x: hidden; }
+
+a:hover, a:active {
+  text-decoration: none; }
+
+:root {
+  --uc-listingCard-padding: 10px;
+  --uc-listingCard-contentPadding: 20px;
+  --uc-listingCard-fontSize--sm: 12px;
+  --uc-listingCard-fontSize--md: 13px;
+  --uc-listingCard-fontSize--lg: 14px;
+  --uc-listingCard-fontSize--xlg: 16px;
+  --uc-listingCard-lineHeight--xsm: 14px;
+  --uc-listingCard-lineHeight--sm: 15px;
+  --uc-listingCard-lineHeight--md: 14px;
+  --uc-listingCard-lineHeight--lg: 14px;
+  --uc-listingCard-lineHeight--xlg: 16px;
+  --uc-listingCard-imageWidth--sm: 100px;
+  --uc-listingCard-imageHeight--sm: 77px;
+  --uc-listingCard-imageWidth--lg: 130px;
+  --uc-listingCard-imageHeight--lg: 100px;
+  --uc-listingCard-borderColor: #dadada;
+  --uc-listingCard-borderColor: var(--colorIntent-borderLightBackgroundLight);
+  --uc-listingCard-primaryTextColor: #000000;
+  --uc-listingCard-primaryTextColor: var(--colorIntent-textTitle);
+  --uc-listingCard-secondaryTextColor: #acacac;
+  --uc-listingCard-secondaryTextColor: var(--colorIntent-textSubtle);
+  --uc-listingCard-statDividerColor: #acacac;
+  --uc-listingCard-statDividerColor: var(--colorIntent-borderSoftBackgroundLight);
+  --listing-badges-incentivesColor: #00b541;
+  --listing-badges-incentivesColor: var(--colorIntent-actionPositive);
+  --listing-badges-activeStatusColor: #00b541;
+  --listing-badges-activeStatusColor: var(--colorIntent-actionPositive);
+  --listing-badges-pendingStatusColor: #ffb000;
+  --listing-badges-pendingStatusColor: var(--colorIntent-backgroundHighlighted);
+  --listing-badges-offMarketStatusColor: #ff2f00;
+  --listing-badges-offMarketStatusColor: var(--colorIntent-actionNegative);
+  --listing-badges-compassExclusiveBadgeColor: #000000;
+  --listing-badges-compassExclusiveBadgeColor: var(--colorIntent-brandDark); }
+
+:root {
+  --cx-baseUnit: 8px;
+  --cx-fixedPageWidth: 1170px;
+  --cx-fixedElementWidth: 770px;
+  --cx-borderWidth: 1px;
+  --cx-borderRadius: 2px;
+  --cx-lineHeight: 1.3em;
+  --cx-horizontalPadding--xs: 6px;
+  --cx-horizontalPadding--sm: 8px;
+  --cx-horizontalPadding--md: 8px;
+  --cx-horizontalPadding--lg: 8px;
+  --cx-verticalPadding--xs: 2px;
+  --cx-verticalPadding--sm: 6px;
+  --cx-verticalPadding--md: 8px;
+  --cx-verticalPadding--lg: 12px;
+  --cx-fontSize--xs: 12px;
+  --cx-fontSize--sm: 14px;
+  --cx-fontSize--md: 16px;
+  --cx-fontSize--lg: 18px;
+  --cx-dropShadow: 0 1px 1px rgba(0, 0, 0, .1);
+  --cx-innerShadow: inset 0 1px 2px rgba(0, 0, 0, .2);
+  --cx-transitionDuration: 100ms;
+  --cx-transitionEasing: ease;
+  --cx-transitionProperty: border-color, background, box-shadow, color, fill;
+  --cx-transition: border-color 100ms ease, background 100ms ease, box-shadow 100ms ease, color 100ms ease, fill 100ms ease;
+  --cx-menu-width--sm: 96px;
+  --cx-menu-width--md: 144px;
+  --cx-menu-width--lg: 200px;
+  --cx-menu-width--xl: 400px;
+  --cx-menu-iconSize: 18px;
+  --cx-zIndex-1: 100;
+  --cx-zIndex-2: 200;
+  --cx-zIndex-3: 300;
+  --cx-zIndex-4: 400;
+  --cx-zIndex-5: 500;
+  --cx-zIndex-6: 600;
+  --cx-zIndex-7: 700;
+  --cx-zIndex-8: 800;
+  --cx-zIndex-9: 900;
+  --cx-zIndex-10: 1000;
+  --cx-avatar-size--xs: 16px;
+  --cx-avatar-size--sm: 24px;
+  --cx-avatar-size--md: 32px;
+  --cx-avatar-size--lg: 40px;
+  --cx-avatar-size--xl: 56px;
+  --cx-avatar-size--xxl: 96px;
+  --cx-btn-padding--xs: 2px 16px;
+  --cx-btn-padding--sm: 6px 16px;
+  --cx-btn-padding--md: 8px 16px;
+  --cx-btn-padding--lg: 12px 24px;
+  --cx-btn-iconPadding: 6px;
+  --cx-btn-iconWidth: 16px;
+  --cx-btn-iconHeight: 16px;
+  --cx-formField-dropdownCaretSize: 16px;
+  --cx-checkBlock-padding: 16px;
+  --cx-formElement-labelMargin: 8px;
+  --cx-formElement-errorMargin: 4px;
+  --cx-toggleField-heightAdjust: 4px;
+  --cx-toggleField-margin: 0.25em 0.4em 0.35em 0;
+  --cx-indicator-size: 8px;
+  --cx-indicator-sizeWithText: 16px;
+  --cx-indicator-nakedOffset: 4px;
+  --cx-optionsMenu-indent: 27px;
+  --cx-modal-width--sm: 288px;
+  --cx-modal-width--md: 400px;
+  --cx-modal-width--lg: 576px;
+  --cx-modal-width--xl: 768px;
+  --cx-modal-maxHeight--sm: 432px;
+  --cx-modal-maxHeight--md: 704px;
+  --cx-modal-maxHeight--lg: 704px;
+  --cx-flyoutMenu-gap: 4px;
+  --cx-popover-tipSize: 8px;
+  --cx-token-iconSize: 9px;
+  --cx-token-borderRadius: 2em;
+  --cx-token-verticalPadding: 0.18em;
+  --cx-token-horizontalPadding: 0.5em;
+  --gutter: 24px;
+  --gutter--xs: 16px;
+  --screenWidth--sm: 376px;
+  --containerWidth--sm: 376px;
+  --screenHeight--sm: 500px;
+  --screenWidth--md: 648px;
+  --containerWidth--md: 648px;
+  --screenHeight--md: 640px;
+  --screenWidth--lg: 888px;
+  --containerWidth--lg: 888px;
+  --screenHeight--lg: 800px;
+  --screenWidth--xl: 952px;
+  --containerWidth--xl: 1176px;
+  --screenHeight--xl: 1080px;
+  --screenWidth--xxl: 1336px;
+  --containerWidth--xxl: 1560px;
+  --screenHeight--xxl: 1200px;
+  --cq-minWidth--sm: (min-width: 376px);
+  --cq-minWidth--md: (min-width: 648px);
+  --cq-minWidth--lg: (min-width: 888px);
+  --cq-minWidth--xl: (min-width: 1176px);
+  --cq-minWidth--xxl: (min-width: 1560px);
+  --cq-maxWidth--xs: (max-width: 375px);
+  --cq-maxWidth--sm: (max-width: 647px);
+  --cq-maxWidth--md: (max-width: 887px);
+  --cq-maxWidth--lg: (max-width: 1175px);
+  --cq-maxWidth--xl: (max-width: 1559px);
+  --mq-minHeight--sm: (min-height: 500px);
+  --mq-minHeight--md: (min-height: 640px);
+  --mq-minHeight--lg: (min-height: 800px);
+  --mq-minHeight--xl: (min-height: 1080px);
+  --mq-minHeight--xxl: (min-height: 1200px);
+  --mq-maxHeight--xs: (max-height: 499px);
+  --mq-maxHeight--sm: (max-height: 639px);
+  --mq-maxHeight--md: (max-height: 799px);
+  --mq-maxHeight--lg: (max-height: 1079px);
+  --mq-maxHeight--xl: (max-height: 1199px);
+  --mq-minWidth--sm: (min-width: 376px);
+  --mq-minWidth--md: (min-width: 648px);
+  --mq-minWidth--lg: (min-width: 888px);
+  --mq-minWidth--xl: (min-width: 952px);
+  --mq-minWidth--xxl: (min-width: 1336px);
+  --mq-maxWidth--xs: (max-width: 375px);
+  --mq-maxWidth--sm: (max-width: 647px);
+  --mq-maxWidth--md: (max-width: 887px);
+  --mq-maxWidth--lg: (max-width: 951px);
+  --mq-maxWidth--xl: (max-width: 1335px);
+  --colorIntent-brandDark: #000;
+  --colorIntent-brandLight: #fff;
+  --colorIntent-action: #000;
+  --colorIntent-actionHover: #5000ff;
+  --colorIntent-actionPressed: #30009b;
+  --colorIntent-actionNegative: #c33;
+  --colorIntent-actionPositive: #06b458;
+  --colorIntent-actionDisabled: #acacac;
+  --colorIntent-background: #fff;
+  --colorIntent-backgroundContainer: #fff;
+  --colorIntent-backgroundContainerAccent: #f9f9f9;
+  --colorIntent-backgroundContainerDark: #acacac;
+  --colorIntent-backgroundInverse: #000;
+  --colorIntent-backgroundBold: #333;
+  --colorIntent-backgroundSemiBold: #6c6c6c;
+  --colorIntent-backdrop: hsla(0, 0%, 42%, .5);
+  --colorIntent-backgroundDropShadow: rgba(0, 0, 0, .1);
+  --colorIntent-backgroundInnerShadow: rgba(0, 0, 0, .2);
+  --colorIntent-backgroundError: #c33;
+  --colorIntent-backgroundSuccess: #06b458;
+  --colorIntent-backgroundHighlighted: #fc0;
+  --colorIntent-backgroundHighlightedSoft: #fff1d9;
+  --colorIntent-borderLightBackgroundLight: #dadada;
+  --colorIntent-borderSoftBackgroundLight: #acacac;
+  --colorIntent-borderMediumBackgroundLight: #6c6c6c;
+  --colorIntent-borderLightBackgroundDark: #6c6c6c;
+  --colorIntent-borderAccentPositive: #06b458;
+  --colorIntent-borderAccentNegative: #c33;
+  --colorIntent-borderLightBezel: #fff;
+  --colorIntent-textTitle: #000;
+  --colorIntent-textBody: #333;
+  --colorIntent-textSubtle: #acacac;
+  --colorIntent-textTitleSubtle: #6c6c6c;
+  --colorIntent-textBold: #000;
+  --colorIntent-textLink: #000;
+  --colorIntent-textLinkHover: #30009b;
+  --colorIntent-textBrightBackgroundDark: #fff;
+  --colorIntent-textSubtleBackgroundDark: hsla(0, 0%, 100%, .75);
+  --colorIntent-textError: #c33;
+  --colorIntent-textSuccess: #06b458;
+  --colorIntent-textHighlighted: #fc0;
+  --colorIntent-actionableFilledBackground: #000;
+  --colorIntent-actionableFilledBorder: #000;
+  --colorIntent-actionableFilledText: #fff;
+  --colorIntent-actionableFilledBackgroundHover: #5000ff;
+  --colorIntent-actionableFilledBorderHover: #5000ff;
+  --colorIntent-actionableFilledTextHover: #fff;
+  --colorIntent-actionableFilledBackgroundPressed: #30009b;
+  --colorIntent-actionableFilledBorderPressed: #30009b;
+  --colorIntent-actionableFilledTextPressed: #fff;
+  --colorIntent-actionableFilledBackgroundDisabled: #dadada;
+  --colorIntent-actionableFilledBorderDisabled: #dadada;
+  --colorIntent-actionableFilledTextDisabled: #acacac;
+  --colorIntent-actionableFilledBackgroundError: #c33;
+  --colorIntent-actionableFilledBorderError: #c33;
+  --colorIntent-actionableFilledTextError: #fff;
+  --colorIntent-actionableFilledBackgroundSuccess: #06b458;
+  --colorIntent-actionableFilledBorderSuccess: #06b458;
+  --colorIntent-actionableFilledTextSuccess: #fff;
+  --colorIntent-actionableFilledBackgroundHighlighted: #fc0;
+  --colorIntent-actionableFilledBorderHighlighted: #fc0;
+  --colorIntent-actionableFilledTextHighlighted: #fff;
+  --colorIntent-actionableInvertedBackground: #fff;
+  --colorIntent-actionableInvertedBorder: #dadada;
+  --colorIntent-actionableInvertedText: #000;
+  --colorIntent-actionableInvertedBackgroundHover: #f9f9f9;
+  --colorIntent-actionableInvertedBorderHover: #dadada;
+  --colorIntent-actionableInvertedTextHover: #5000ff;
+  --colorIntent-actionableInvertedBackgroundPressed: #f9f9f9;
+  --colorIntent-actionableInvertedBorderPressed: #dadada;
+  --colorIntent-actionableInvertedTextPressed: #30009b;
+  --colorIntent-actionableInvertedBackgroundDisabled: #dadada;
+  --colorIntent-actionableInvertedBorderDisabled: #dadada;
+  --colorIntent-actionableInvertedTextDisabled: #acacac;
+  --colorIntent-actionableInvertedBackgroundError: #ffe3e3;
+  --colorIntent-actionableInvertedBorderError: #c33;
+  --colorIntent-actionableInvertedTextError: #c33;
+  --colorIntent-actionableInvertedBackgroundSuccess: #e6f5e8;
+  --colorIntent-actionableInvertedBorderSuccess: #06b458;
+  --colorIntent-actionableInvertedTextSuccess: #06b458;
+  --colorIntent-actionableInvertedBackgroundSelected: #30009b;
+  --colorIntent-actionableInvertedBorderSelected: #30009b;
+  --colorIntent-actionableInvertedTextSelected: #fff;
+  --colorIntent-actionableInvertedBackgroundSelectedHover: #5000ff;
+  --colorIntent-actionableInvertedBorderSelectedHover: #5000ff;
+  --colorIntent-actionableInvertedTextSelectedHover: #fff;
+  --colorIntent-formElementBackground: #fff;
+  --colorIntent-formElementBorder: #dadada;
+  --colorIntent-formElementText: #000;
+  --colorIntent-formElementPlaceholder: #acacac;
+  --colorIntent-formElementAccessoryActionable: #5000ff;
+  --colorIntent-formElementAccessoryDecorative: #000;
+  --colorIntent-formElementLabel: #000;
+  --colorIntent-formElementSubLabel: #acacac;
+  --colorIntent-formElementBackgroundHover: #fff;
+  --colorIntent-formElementBorderHover: #5000ff;
+  --colorIntent-formElementTextHover: #000;
+  --colorIntent-formElementPlaceholderHover: #acacac;
+  --colorIntent-formElementAccessoryActionableHover: #5000ff;
+  --colorIntent-formElementAccessoryDecorativeHover: #5000ff;
+  --colorIntent-formElementLabelHover: #000;
+  --colorIntent-formElementSubLabelHover: #acacac;
+  --colorIntent-formElementBackgroundActive: #fff;
+  --colorIntent-formElementBorderActive: #30009b;
+  --colorIntent-formElementTextActive: #000;
+  --colorIntent-formElementPlaceholderActive: #acacac;
+  --colorIntent-formElementAccessoryActionableActive: #30009b;
+  --colorIntent-formElementAccessoryDecorativeActive: #30009b;
+  --colorIntent-formElementLabelActive: #000;
+  --colorIntent-formElementSubLabelActive: #acacac;
+  --colorIntent-formElementBackgroundDisabled: #dadada;
+  --colorIntent-formElementBorderDisabled: #acacac;
+  --colorIntent-formElementTextDisabled: #acacac;
+  --colorIntent-formElementPlaceholderDisabled: #acacac;
+  --colorIntent-formElementAccessoryActionableDisabled: #acacac;
+  --colorIntent-formElementAccessoryDecorativeDisabled: #acacac;
+  --colorIntent-formElementLabelDisabled: #acacac;
+  --colorIntent-formElementSubLabelDisabled: #acacac;
+  --colorIntent-formElementBackgroundError: #fff;
+  --colorIntent-formElementBorderError: #c33;
+  --colorIntent-formElementTextError: #c33;
+  --colorIntent-formElementPlaceholderError: #c33;
+  --colorIntent-formElementAccessoryActionableError: #c33;
+  --colorIntent-formElementAccessoryDecorativeError: #c33;
+  --colorIntent-formElementLabelError: #000;
+  --colorIntent-formElementSubLabelError: #acacac;
+  --colorIntent-formElementBackgroundSuccess: #fff;
+  --colorIntent-formElementBorderSuccess: #06b458;
+  --colorIntent-formElementTextSuccess: #06b458;
+  --colorIntent-formElementPlaceholderSuccess: #06b458;
+  --colorIntent-formElementAccessoryActionableSuccess: #06b458;
+  --colorIntent-formElementAccessoryDecorativeSuccess: #06b458;
+  --colorIntent-formElementLabelSuccess: #000;
+  --colorIntent-formElementSubLabelSuccess: #acacac;
+  --colorIntent-menuBackground: #fff;
+  --colorIntent-menuBorder: #dadada;
+  --colorIntent-menuText: #333;
+  --colorIntent-menuBackgroundHover: #f9f9f9;
+  --colorIntent-menuBorderHover: #f9f9f9;
+  --colorIntent-menuTextHover: #5000ff;
+  --colorIntent-menuBackgroundPressed: #f9f9f9;
+  --colorIntent-menuBorderPressed: #f9f9f9;
+  --colorIntent-menuTextPressed: #30009b;
+  --colorIntent-menuBackgroundChecked: #fff;
+  --colorIntent-menuBorderChecked: #dadada;
+  --colorIntent-menuTextChecked: #5000ff;
+  --colorIntent-menuBackgroundSelected: #30009b;
+  --colorIntent-menuBorderSelected: #30009b;
+  --colorIntent-menuTextSelected: #fff;
+  --colorIntent-menuBackgroundDisabled: #fff;
+  --colorIntent-menuBorderDisabled: #dadada;
+  --colorIntent-menuTextDisabled: #acacac;
+  --colorIntent-menuBackgroundAlt: #fff;
+  --colorIntent-menuBorderAlt: #dadada;
+  --colorIntent-menuTextAlt: #333;
+  --colorIntent-poptipBackground: rgba(0, 0, 0, .85);
+  --colorIntent-poptipBorder: rgba(0, 0, 0, .85);
+  --colorIntent-poptipText: #fff;
+  --colorIntent-mapPinBackgroundGradient: linear-gradient(180deg, #fff, #f9f9f9);
+  --colorIntent-mapPinBackground: #f9f9f9;
+  --colorIntent-mapPinBorder: #333;
+  --colorIntent-mapPinText: #333;
+  --colorIntent-mapPinShadow: rgba(0, 0, 0, .35);
+  --colorIntent-mapPinSeparator: #acacac;
+  --colorIntent-mapPinBackgroundGradientHover: linear-gradient(180deg, #5000ff, #30009b);
+  --colorIntent-mapPinBackgroundHover: #30009b;
+  --colorIntent-mapPinBorderHover: #30009b;
+  --colorIntent-mapPinTextHover: #fff;
+  --colorIntent-mapPinShadowHover: #acacac;
+  --colorIntent-mapPinSeparatorHover: #30009b;
+  --colorIntent-mapPinBackgroundGradientActive: linear-gradient(180deg, #5000ff, #30009b);
+  --colorIntent-mapPinBackgroundActive: #30009b;
+  --colorIntent-mapPinBorderActive: #30009b;
+  --colorIntent-mapPinTextActive: #fff;
+  --colorIntent-mapPinShadowActive: #acacac;
+  --colorIntent-mapPinSeparatorActive: #30009b;
+  --colorIntent-mapPinAccessoryBackground: #fff;
+  --colorIntent-mapPinAccessoryForeground: #acacac;
+  --colorIntent-mapPinAccessoryForegroundHover: #fff;
+  --colorIntent-mapPinAccessoryForegroundActive: #fff;
+  --colorIntent-mapPinAccessoryBackgroundSaved: #fc0;
+  --colorIntent-mapPinAccessoryForegroundSaved: #fff;
+  --colorIntent-mapPinAccessoryBackgroundAccented: #fff;
+  --colorIntent-mapPinAccessoryForegroundAccented: #5000ff;
+  --colorIntent-mapPinAccessoryBackgroundExclusive: #000;
+  --colorIntent-mapPinAccessoryForegroundExclusive: #fff;
+  --colorIntent-mapPinTooltipBackground: #333;
+  --colorIntent-mapPinTooltipBorder: #333;
+  --colorIntent-mapPinTooltipText: #fff;
+  --colorIntent-tableBackground: #fff;
+  --colorIntent-tableHeaderBackground: #fff;
+  --colorIntent-tableHeaderBorder: #dadada;
+  --colorIntent-tableHeaderText: #000;
+  --colorIntent-tableHeaderTextSelected: #30009b;
+  --colorIntent-tableHeaderIcon: #acacac;
+  --colorIntent-tableHeaderIconSelected: #000;
+  --colorIntent-tableHeaderBackgroundSorted: #dadada;
+  --colorIntent-tableHeaderBackgroundDragged: #dadada;
+  --colorIntent-tableRowBackground: #fff;
+  --colorIntent-tableRowBackgroundHover: #f9f9f9;
+  --colorIntent-tableRowBackgroundActive: #f9f9f9;
+  --colorIntent-tableRowBackgroundChecked: #fff;
+  --colorIntent-tableRowBackgroundSelected: #30009b;
+  --colorIntent-tableRowBorder: #dadada;
+  --colorIntent-tableRowBorderHover: #dadada;
+  --colorIntent-tableRowBorderActive: #dadada;
+  --colorIntent-tableRowBorderChecked: #dadada;
+  --colorIntent-tableRowBorderSelected: #dadada;
+  --colorIntent-tableRowText: #333;
+  --colorIntent-tableRowTextHover: #333;
+  --colorIntent-tableRowTextActive: #30009b;
+  --colorIntent-tableRowTextChecked: #30009b;
+  --colorIntent-tableRowTextSelected: #fff;
+  --colorIntent-tableRowBackgroundDisabled: #acacac;
+  --colorIntent-tableRowBackgroundEven: #fff;
+  --colorIntent-tableRowBackgroundOdd: #fff;
+  --colorIntent-tableCellBackgroundActive: #30009b;
+  --colorIntent-tableCellBorderActive: #30009b;
+  --colorIntent-tableCellBackgroundDisabled: #acacac;
+  --colorIntent-tableCellText: #333;
+  --colorIntent-tableOverlayBackground: hsla(0, 0%, 100%, .5);
+  --colorIntent-tableOverlayText: #333;
+  --colorIntent-tableOverlayTextBackground: #dadada;
+  --colorIntent-tableHeaderIconSorted: #6c6c6c;
+  --colorIntent-avatarBackground: #f9f9f9;
+  --colorIntent-avatarBorder: #dadada;
+  --colorIntent-avatarText: #000;
+  --colorIntent-avatarBackgroundHover: #f9f9f9;
+  --colorIntent-avatarBorderHover: #dadada;
+  --colorIntent-avatarTextHover: #000;
+  --colorIntent-avatarBackgroundDisabled: #f9f9f9;
+  --colorIntent-avatarBorderDisabled: #dadada;
+  --colorIntent-avatarTextDisabled: #000;
+  --colorIntent-avatarBackgroundActive: #f9f9f9;
+  --colorIntent-avatarBorderActive: #dadada;
+  --colorIntent-avatarTextActive: #000;
+  --colorIntent-tokenBackground: #fff;
+  --colorIntent-tokenBorder: #dadada;
+  --colorIntent-tokenText: #000;
+  --colorIntent-tokenBackgroundHover: #f9f9f9;
+  --colorIntent-tokenBorderHover: #dadada;
+  --colorIntent-tokenTextHover: #5000ff;
+  --colorIntent-tokenBackgroundDisabled: #dadada;
+  --colorIntent-tokenBorderDisabled: #dadada;
+  --colorIntent-tokenTextDisabled: #acacac;
+  --colorIntent-tokenBackgroundActive: #f9f9f9;
+  --colorIntent-tokenBorderActive: #dadada;
+  --colorIntent-tokenTextActive: #30009b;
+  --colorIntent-tokenActionableBackground: #000;
+  --colorIntent-tokenActionableBorder: #000;
+  --colorIntent-tokenActionableText: #fff;
+  --colorIntent-tokenActionableBackgroundHover: #000;
+  --colorIntent-tokenActionableBorderHover: #000;
+  --colorIntent-tokenActionableTextHover: #fff;
+  --colorIntent-tokenActionableBackgroundDisabled: #dadada;
+  --colorIntent-tokenActionableBorderDisabled: #dadada;
+  --colorIntent-tokenActionableTextDisabled: #6c6c6c;
+  --colorIntent-tokenActionableBackgroundActive: #30009b;
+  --colorIntent-tokenActionableBorderActive: #30009b;
+  --colorIntent-tokenActionableTextActive: #fff;
+  --colorIntent-indicatorBackground: #000;
+  --colorIntent-indicatorBorder: #fff;
+  --colorIntent-indicatorText: #fff;
+  --colorIntent-indicatorNewBackground: #c33;
+  --colorIntent-indicatorNewBorder: #fff;
+  --colorIntent-indicatorNewText: #fff;
+  --colorIntent-indicatorDisabledBackground: #acacac;
+  --colorIntent-indicatorDisabledBorder: #fff;
+  --colorIntent-indicatorDisabledText: #fff;
+  --colorIntent-divergent122: #944504;
+  --colorIntent-divergent189: #eb672e;
+  --colorIntent-divergent111: #ffe4d1;
+  --colorIntent-divergent246: #007363;
+  --colorIntent-divergent214: #04aa82;
+  --colorIntent-divergent225: #d4efe8;
+  --colorIntent-divergent376: #007182;
+  --colorIntent-divergent332: #02acc0;
+  --colorIntent-divergent300: #d2f4ff;
+  --colorIntent-divergent405: #75369f;
+  --colorIntent-divergent475: #b054ca;
+  --colorIntent-divergent422: #eed6ff;
+  --cx-modal-bp--sm: (max-width: 315px);
+  --cx-modal-bp--md: (max-width: 415px);
+  --cx-modal-bp--lg: (max-width: 615px);
+  --cx-modal-bp--xl: (max-width: 785px); }
+
+:root {
+  --cx-token-iconSize: 9px;
+  --cx-token-borderRadius: 2em;
+  --cx-token-verticalPadding: 0.18em;
+  --cx-token-horizontalPadding: 0.5em; }
+
+:root {
+  --cx-popover-tipSize: 8px;
+  --cx-popover-tipSize: var(--cx-baseUnit); }
+
+:root {
+  --cx-flyoutMenu-gap: 4px;
+  --cx-flyoutMenu-gap: calc(var(--cx-baseUnit) * 0.5); }
+
+:root {
+  --cx-modal-width--sm: 288px;
+  --cx-modal-width--sm: calc(var(--cx-baseUnit) * 36);
+  --cx-modal-width--md: 400px;
+  --cx-modal-width--md: calc(var(--cx-baseUnit) * 50);
+  --cx-modal-width--lg: 576px;
+  --cx-modal-width--lg: calc(var(--cx-baseUnit) * 72);
+  --cx-modal-width--xl: 768px;
+  --cx-modal-width--xl: calc(var(--cx-baseUnit) * 96);
+  --cx-modal-maxHeight--sm: 432px;
+  --cx-modal-maxHeight--sm: calc(var(--cx-baseUnit) * 54);
+  --cx-modal-maxHeight--md: 704px;
+  --cx-modal-maxHeight--md: calc(var(--cx-baseUnit) * 88);
+  --cx-modal-maxHeight--lg: 704px;
+  --cx-modal-maxHeight--lg: calc(var(--cx-baseUnit) * 88); }
+
+:root {
+  --cx-optionsMenu-indent: 27px;
+  --cx-optionsMenu-indent: calc(var(--cx-menu-iconSize) + var(--cx-horizontalPadding--md) + var(--cx-borderWidth)); }
+
+:root {
+  --cx-indicator-size: 8px;
+  --cx-indicator-size: var(--cx-baseUnit);
+  --cx-indicator-sizeWithText: 16px;
+  --cx-indicator-sizeWithText: calc(var(--cx-baseUnit) * 2);
+  --cx-indicator-nakedOffset: 4px;
+  --cx-indicator-nakedOffset: calc(var(--cx-indicator-size) / 2); }
+
+:root {
+  --cx-toggleField-heightAdjust: 4px;
+  --cx-toggleField-heightAdjust: calc(var(--cx-baseUnit) * 0.5);
+  --cx-toggleField-margin: 0.25em 0.4em 0.35em 0; }
+
+:root {
+  --cx-formElement-labelMargin: 8px;
+  --cx-formElement-labelMargin: var(--cx-baseUnit);
+  --cx-formElement-errorMargin: 4px;
+  --cx-formElement-errorMargin: calc(var(--cx-baseUnit) * 0.5); }
+
+:root {
+  --cx-formField-dropdownCaretSize: 16px;
+  --cx-formField-dropdownCaretSize: calc(var(--cx-baseUnit) * 2);
+  --cx-checkBlock-padding: 16px;
+  --cx-checkBlock-padding: calc(var(--cx-baseUnit) * 2); }
+
+:root {
+  --cx-btn-padding--xs: 2px 16px;
+  --cx-btn-padding--xs: var(--cx-verticalPadding--xs) calc(var(--cx-baseUnit) * 2);
+  --cx-btn-padding--sm: 6px 16px;
+  --cx-btn-padding--sm: var(--cx-verticalPadding--sm) calc(var(--cx-baseUnit) * 2);
+  --cx-btn-padding--md: 8px 16px;
+  --cx-btn-padding--md: var(--cx-verticalPadding--md) calc(var(--cx-baseUnit) * 2);
+  --cx-btn-padding--lg: 12px 24px;
+  --cx-btn-padding--lg: var(--cx-verticalPadding--lg) calc(var(--cx-baseUnit) * 3);
+  --cx-btn-iconPadding: 6px;
+  --cx-btn-iconWidth: 16px;
+  --cx-btn-iconHeight: 16px; }
+
+:root {
+  --cx-avatar-size--xs: 16px;
+  --cx-avatar-size--xs: calc(var(--cx-baseUnit) * 2);
+  --cx-avatar-size--sm: 24px;
+  --cx-avatar-size--sm: calc(var(--cx-baseUnit) * 3);
+  --cx-avatar-size--md: 32px;
+  --cx-avatar-size--md: calc(var(--cx-baseUnit) * 4);
+  --cx-avatar-size--lg: 40px;
+  --cx-avatar-size--lg: calc(var(--cx-baseUnit) * 5);
+  --cx-avatar-size--xl: 56px;
+  --cx-avatar-size--xl: calc(var(--cx-baseUnit) * 7);
+  --cx-avatar-size--xxl: 96px;
+  --cx-avatar-size--xxl: calc(var(--cx-baseUnit) * 12); }
+
+:root {
+  --cx-baseUnit: 8px;
+  --cx-fixedPageWidth: 1170px;
+  --cx-fixedElementWidth: 770px;
+  --cx-borderWidth: 1px;
+  --cx-borderRadius: 2px;
+  --cx-lineHeight: 1.3em;
+  --cx-horizontalPadding--xs: 6px;
+  --cx-horizontalPadding--xs: calc(var(--cx-baseUnit) * 0.75);
+  --cx-horizontalPadding--sm: 8px;
+  --cx-horizontalPadding--sm: var(--cx-baseUnit);
+  --cx-horizontalPadding--md: 8px;
+  --cx-horizontalPadding--md: var(--cx-baseUnit);
+  --cx-horizontalPadding--lg: 8px;
+  --cx-horizontalPadding--lg: var(--cx-baseUnit);
+  --cx-verticalPadding--xs: 2px;
+  --cx-verticalPadding--xs: calc(var(--cx-baseUnit) * 0.25);
+  --cx-verticalPadding--sm: 6px;
+  --cx-verticalPadding--sm: calc(var(--cx-baseUnit) * 0.75);
+  --cx-verticalPadding--md: 8px;
+  --cx-verticalPadding--md: var(--cx-baseUnit);
+  --cx-verticalPadding--lg: 12px;
+  --cx-verticalPadding--lg: calc(var(--cx-baseUnit) * 1.5);
+  --cx-fontSize--xs: 12px;
+  --cx-fontSize--sm: 14px;
+  --cx-fontSize--md: 16px;
+  --cx-fontSize--lg: 18px;
+  --cx-dropShadow: 0 1px 1px rgba(0, 0, 0, .1);
+  --cx-dropShadow: 0 1px 1px var(--colorIntent-backgroundDropShadow);
+  --cx-innerShadow: inset 0 1px 2px rgba(0, 0, 0, .2);
+  --cx-innerShadow: inset 0 1px 2px var(--colorIntent-backgroundInnerShadow);
+  --cx-transitionDuration: 100ms;
+  --cx-transitionEasing: ease;
+  --cx-transitionProperty: border-color, background, box-shadow, color, fill;
+  --cx-transition: border-color 100ms ease, background 100ms ease, box-shadow 100ms ease, color 100ms ease, fill 100ms ease;
+  --cx-transition: border-color var(--cx-transitionDuration) var(--cx-transitionEasing), background var(--cx-transitionDuration) var(--cx-transitionEasing), box-shadow var(--cx-transitionDuration) var(--cx-transitionEasing), color var(--cx-transitionDuration) var(--cx-transitionEasing), fill var(--cx-transitionDuration) var(--cx-transitionEasing);
+  --cx-menu-width--sm: 96px;
+  --cx-menu-width--sm: calc(var(--cx-baseUnit) * 12);
+  --cx-menu-width--md: 144px;
+  --cx-menu-width--md: calc(var(--cx-baseUnit) * 18);
+  --cx-menu-width--lg: 200px;
+  --cx-menu-width--lg: calc(var(--cx-baseUnit) * 25);
+  --cx-menu-width--xl: 400px;
+  --cx-menu-width--xl: calc(var(--cx-baseUnit) * 50);
+  --cx-menu-iconSize: 18px;
+  --cx-menu-iconSize: calc(var(--cx-fontSize--sm) + var(--cx-baseUnit) * 0.5);
+  --cx-zIndex-1: 100;
+  --cx-zIndex-2: 200;
+  --cx-zIndex-3: 300;
+  --cx-zIndex-4: 400;
+  --cx-zIndex-5: 500;
+  --cx-zIndex-6: 600;
+  --cx-zIndex-7: 700;
+  --cx-zIndex-8: 800;
+  --cx-zIndex-9: 900;
+  --cx-zIndex-10: 1000; }
+
+:root {
+  --font-weightRegular: 400;
+  --font-weightMedium: 500;
+  --font-weightBold: 700;
+  --font-weightSemiBold: 600; }
+
+:root {
+  --drawerWidth: 286px;
+  --flyoutItemHeight: 39px;
+  --navHeight: 48px;
+  --locationLookupHeight: 40px;
+  --locationLookupIconSize: 24px; }
+
+.uc-corpNav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--colorIntent-backgroundDropShadow);
+  width: 100%;
+  height: 48px;
+  height: var(--navHeight);
+  color: #000000;
+  color: var(--colorIntent-brandDark);
+  background-color: #ffffff;
+  background-color: var(--colorIntent-brandLight);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Start location-lookup styles block */
+  /*
+     * Target {containerClass} button to override .uc-corpNav button
+     */
+  /* End location-lookup styles block */ }
+  .uc-corpNav .uc-corpNav--transparent::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: -80%;
+    left: 0;
+    z-index: -1;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(transparent));
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5), transparent); }
+  .uc-corpNav .uc-corpNav--transparent .uc-corpNav-drawer {
+    color: #000000;
+    color: var(--colorIntent-brandDark);
+    background-color: #ffffff;
+    background-color: var(--colorIntent-brandLight); }
+  .uc-corpNav .uc-corpNav * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box; }
+  .uc-corpNav .uc-corpNav-a {
+    text-decoration: none; }
+  .uc-corpNav .uc-corpNav-button {
+    background-color: transparent; }
+  .uc-corpNav .uc-corpNav-svg {
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    fill: currentColor; }
+  .uc-corpNav .uc-corpNav-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 100%; }
+  .uc-corpNav .uc-corpNav-hamburger {
+    padding: 0 8px 0 16px;
+    width: 48px;
+    height: 100%;
+    cursor: pointer; }
+  .uc-corpNav .uc-corpNav-logotype {
+    padding-right: 24px;
+    width: 123px;
+    height: 100%;
+    color: inherit; }
+  .uc-corpNav .uc-corpNav-menuWrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100%; }
+  .uc-corpNav .uc-corpNav-menu {
+    display: none;
+    padding: 0 10px;
+    height: 100%; }
+  .uc-corpNav .uc-corpNav-userMenu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+  .uc-corpNav .uc-corpNav-menuItem {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border: none;
+    padding: 0 10px;
+    height: 100%;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: inherit;
+    font-weight: var(--font-weightMedium);
+    font-weight: var(--font-weightMedium);
+    -webkit-transition: all 0.1s ease;
+    transition: all 0.1s ease;
+    font-weight: bold;
+    font-size: 13px; }
+  .uc-corpNav .uc-corpNav-dropdown {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative; }
+  .uc-corpNav .uc-corpNav-dropdownIcon {
+    position: relative;
+    top: 1px;
+    margin-left: 6px;
+    width: 14px;
+    height: 100%;
+    -webkit-transform: scale(1, 0.75);
+    transform: scale(1, 0.75); }
+  .uc-corpNav .uc-corpNav-flyout {
+    display: none;
+    position: absolute;
+    top: 48px;
+    top: var(--navHeight);
+    border: 1px solid #dadada;
+    border: var(--cx-borderWidth) solid var(--colorIntent-menuBorder);
+    padding-top: 14px;
+    padding-bottom: 18px;
+    max-height: 307px;
+    max-height: calc(7 * var(--flyoutItemHeight) + 34px);
+    overflow-y: auto;
+    white-space: nowrap;
+    background-color: #ffffff;
+    background-color: var(--colorIntent-background);
+    -webkit-transform: translateX(-10px);
+    transform: translateX(-10px);
+    z-index: 1000;
+    z-index: var(--cx-zIndex-10); }
+  .uc-corpNav .uc-corpNav-dropdown.is-active > .uc-corpNav-flyout {
+    display: block; }
+  .uc-corpNav .uc-corpNav-flyoutItem {
+    padding: 0 30px 0 16px;
+    height: 39px;
+    height: var(--flyoutItemHeight);
+    font-weight: var(--font-weightRegular);
+    font-weight: var(--font-weightRegular);
+    color: #000000;
+    color: var(--colorIntent-brandDark);
+    cursor: pointer; }
+  .uc-corpNav .uc-corpNav-geoDropdown {
+    display: none; }
+  .uc-corpNav .uc-corpNav-avatar {
+    width: 44px; }
+  .uc-corpNav .uc-corpNav-drawer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: fixed;
+    left: -286px;
+    left: calc(var(--drawerWidth) * -1);
+    width: 286px;
+    width: var(--drawerWidth);
+    height: 100vh;
+    background-color: inherit;
+    overflow-y: auto;
+    -webkit-transition: left 0.3s ease;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    z-index: var(--cx-zIndex-10); }
+  .uc-corpNav .uc-corpNav-backdrop {
+    position: fixed;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+    background-color: var(--colorIntent-brandDark);
+    opacity: 0.5;
+    cursor: pointer;
+    visibility: hidden;
+    -webkit-transition: left 0.3s ease;
+    transition: left 0.3s ease;
+    z-index: 900;
+    z-index: var(--cx-zIndex-9); }
+  .uc-corpNav .uc-corpNav-drawer.is-active {
+    left: 0; }
+  .uc-corpNav .uc-corpNav-drawer.is-active > .uc-corpNav-backdrop {
+    left: 286px;
+    left: var(--drawerWidth);
+    visibility: visible; }
+  .uc-corpNav .uc-corpNav-close {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0 16px;
+    min-height: 48px;
+    min-height: var(--navHeight);
+    font-weight: var(--font-weightMedium);
+    font-weight: var(--font-weightMedium);
+    color: inherit;
+    cursor: pointer; }
+  .uc-corpNav .uc-corpNav-closeIcon {
+    margin-right: 8px;
+    width: 24px;
+    height: 16px; }
+  .uc-corpNav .uc-corpNav-auth {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 16px;
+    min-height: 40px; }
+  .uc-corpNav .uc-corpNav-auth a:nth-child(2) {
+    margin-left: 8px; }
+  .uc-corpNav .uc-corpNav-auth button {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1; }
+  .uc-corpNav .uc-corpNav-drawer .uc-corpNav-menuItem {
+    padding-left: 16px;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    min-height: 40px;
+    max-height: 48px; }
+  .uc-corpNav .uc-corpNav-geoSelectWrapper {
+    margin-left: 16px;
+    margin-top: 44px; }
+  .uc-corpNav .uc-corpNav-geoSelectWrapper::after {
+    content: '';
+    display: inline-block;
+    position: relative;
+    top: 6px;
+    right: 28px;
+    width: 14px;
+    height: 16px;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%0A%20%20%20%20viewBox%3D%220%200%2016%2016%22%3E%0A%20%20%3Cpath%20d%3D%22M8.41%2C10.78L12.5%2C5h-9l4.09%2C5.78A0.5%2C0.5%2C0%2C0%2C0%2C8.41%2C10.78Z%22%2F%3E%0A%3Cdefs%3E%3Cstyle%3Epath%20%7B%0A%20%20%20%20%20%20fill%3A%20%23000000%3B%0A%20%20%20%20%20%20transform%3A%20scale%281%2C%200.75%29%3B%0A%20%20%20%20%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3C%2Fsvg%3E%0A"); }
+  .uc-corpNav .uc-corpNav-geoSelect {
+    border: 1px #dadada solid;
+    border: 1px var(--colorIntent-formElementBorder) solid;
+    border-radius: 0;
+    padding: 2px 8px;
+    width: 200px;
+    font-weight: var(--font-weightMedium);
+    font-weight: var(--font-weightMedium);
+    line-height: 1.3em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    background-color: #ffffff;
+    background-color: var(--colorIntent-formElementBackground);
+    color: #acacac;
+    color: var(--colorIntent-formElementPlaceholder); }
+  .uc-corpNav .uc-corpNav-geoSelect:active,
+  .uc-corpNav .uc-corpNav-geoSelect:focus {
+    border-color: #2f009d;
+    border-color: var(--colorIntent-formElementBorderActive);
+    outline: none; }
+  .uc-corpNav .uc-locationLookup {
+    margin: 4px auto 0;
+    -ms-flex-item-align: start;
+    align-self: flex-start;
+    width: 450px;
+    background: #ffffff;
+    background: var(--colorIntent-brandLight);
+    z-index: 1; }
+  .uc-corpNav .uc-locationLookup-searchContainer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    min-width: 420px;
+    height: 40px;
+    height: var(--locationLookupHeight); }
+  .uc-corpNav .uc-locationLookup-inputContainer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    padding: 0;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    height: 100%;
+    overflow: hidden; }
+  .uc-corpNav .uc-locationLookup-searchButton {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    padding: 0;
+    width: 40px;
+    height: 100%; }
+  .uc-corpNav .uc-locationLookup-searchIcon {
+    margin: auto;
+    width: 24px;
+    width: var(--locationLookupIconSize);
+    height: 24px;
+    height: var(--locationLookupIconSize); }
+  .uc-corpNav .uc-locationLookup-inlineSearchIcon {
+    display: none;
+    /* The input itself has left padding baked in, so the right margin here is 8px instead of 16px. */
+    margin: 8px 8px 8px 16px;
+    width: 24px;
+    width: var(--locationLookupIconSize);
+    height: 24px;
+    height: var(--locationLookupIconSize); }
+  .uc-corpNav .uc-locationLookup-optionsContainer {
+    display: none; }
+  .uc-corpNav .uc-locationLookup-clearButton {
+    border: 0; }
+  .uc-corpNav .uc-corpNav-appBtns {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 48px;
+    margin-left: 16px;
+    height: 34px; }
+  .uc-corpNav .uc-corpNav-appBtn {
+    margin-right: 16px;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    background-size: 100% 100%;
+    background-repeat: no-repeat; }
+  .uc-corpNav .uc-corpNav-androidBtn {
+    background-image: url(https://images.ctfassets.net/x01lqw608u1m/5IuqcWiWxI4ZhGAsBRGE7v/d78c00f0311bd3465720f7c574e1fb62/playstore.png); }
+  .uc-corpNav .uc-corpNav-iosBtn {
+    background-image: url(https://images.ctfassets.net/x01lqw608u1m/3X7x96c8UYp8qoSgXRtVhE/5cde7194bab3e7ccb3d30be21112a522/appstore.png); }
+  .uc-corpNav .uc-corpNav-drawer .uc-corpNav-sectionSeparator {
+    position: relative; }
+  .uc-corpNav .uc-corpNav-drawer .uc-corpNav-sectionSeparator::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -24px;
+    border-top: 1px solid;
+    width: 24px;
+    opacity: 0.15;
+    pointer-events: none; }
+  @media (min-width: 888px) {
+    .uc-corpNav .uc-corpNav-hamburger {
+      display: none; }
+    .uc-corpNav .uc-corpNav-logotype {
+      padding-left: 24px;
+      width: 161px; }
+    .uc-corpNav .uc-corpNav-geoDropdown {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; }
+    .uc-corpNav .uc-corpNav-menu {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; }
+    .uc-corpNav .uc-corpNav-userMenu::before {
+      content: '';
+      position: relative;
+      top: 17px;
+      left: -10px;
+      border-left: 1px solid;
+      height: 16px;
+      opacity: 0.15; }
+    .uc-corpNav .uc-corpNav-drawer {
+      display: none; } }
+  @media (hover: hover) {
+    .uc-corpNav .uc-corpNav-menuItem:hover {
+      color: #ffffff;
+      color: var(--colorIntent-brandLight);
+      background-color: #5000ff;
+      background-color: var(--colorIntent-actionHover); }
+    .uc-corpNav .uc-corpNav-geoSelectWrapper:hover::after {
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%0A%20%20%20%20viewBox%3D%220%200%2016%2016%22%3E%0A%20%20%3Cpath%20d%3D%22M8.41%2C10.78L12.5%2C5h-9l4.09%2C5.78A0.5%2C0.5%2C0%2C0%2C0%2C8.41%2C10.78Z%22%2F%3E%0A%3Cdefs%3E%3Cstyle%3Epath%20%7B%0A%20%20%20%20%20%20%20%20fill%3A%20%235000ff%3B%0A%20%20%20%20%20%20%20%20transform%3A%20scale%281%2C%200.75%29%3B%0A%20%20%20%20%20%20%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3C%2Fsvg%3E%0A"); }
+    .uc-corpNav .uc-corpNav-geoSelect:hover {
+      border-color: #5000ff;
+      border-color: var(--colorIntent-formElementBorderHover); } }
+  .uc-corpNav .uc-corpNav-menuItem:active,
+  .uc-corpNav .uc-corpNav-menuItem.is-active,
+  .uc-corpNav .uc-corpNav-flyoutItem.is-selected {
+    color: #ffffff;
+    color: var(--colorIntent-brandLight);
+    background-color: #2f009d;
+    background-color: var(--colorIntent-actionPressed); }
+  .uc-corpNav .uc-corpNav-geoSelect:active,
+  .uc-corpNav .uc-corpNav-geoSelect:focus {
+    border-color: #2f009d;
+    border-color: var(--colorIntent-formElementBorderActive);
+    outline: none; }
+
+.uc-corpNav--transparent {
+  position: absolute;
+  border-color: rgba(255, 255, 255, 0.7);
+  color: #ffffff;
+  color: var(--colorIntent-brandLight);
+  background-color: transparent;
+  z-index: 1000;
+  z-index: var(--cx-zIndex-10); }
+
+#navbar-primary {
+  background-color: transparent; }
+  #navbar-primary * {
+    font-weight: 600;
+    font-size: 14px; }
+  #navbar-primary #logo {
+    width: 113px; }
+    #navbar-primary #logo path {
+      color: #fff; }
+  #navbar-primary #search .btn {
+    height: 48px;
+    background-color: transparent;
+    border: 0;
+    color: #fff; }
+  #navbar-primary #search .dropdown-item {
+    padding: 0 30px 0 16px;
+    line-height: 39px;
+    color: #000000;
+    cursor: pointer;
+    font-weight: normal; }
+  #navbar-primary .navbar-nav .nav-link {
+    color: #fff; }
+
+.homepage .homepage-featuredExclusives {
+  margin-left: -15px;
+  margin-right: -15px; }
+.homepage .flickity-button {
+  background: transparent !important;
+  opacity: 0; }
+.homepage .flickity-button-icon {
+  fill: #fff; }
+.homepage .flickity:hover .flickity-button {
+  opacity: 1; }
+.homepage .tt-dropdown-menu {
+  display: none !important; }
+.homepage .legacyOmnibox-input:focus ~ .tt-dropdown-menu {
+  display: block !important; }
+
+.uc-smartHtmlTruncate-showMore {
+  display: block;
+  margin-top: 10px;
+  color: #00779a; }
+
+.flexslider.remove-direct .flex-control-nav {
+  display: none; }
+
+.uc-listingCard {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  border-radius: 2px;
+  border: 1px solid #ccc;
+  border-radius: var(--cx-borderRadius);
+  background-color: #ffffff;
+  background-color: var(--colorIntent-background); }
+  .uc-listingCard:hover {
+    border: 1px solid #dadada;
+    border: 1px solid var(--uc-listingCard-borderColor); }
+  .uc-listingCard .uc-listingCard-body {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    width: 100%;
+    text-decoration: none; }
+    .uc-listingCard .uc-listingCard-body .uc-listingCard-cornerBoxContainer {
+      position: absolute;
+      top: 10px;
+      top: var(--uc-listingCard-padding);
+      left: 10px;
+      left: var(--uc-listingCard-padding);
+      width: calc(100% - 50px); }
+    .uc-listingCard .uc-listingCard-body .uc-listingCard-cornerBox--compassExclusive {
+      border: 1px solid #ffffff;
+      border: 1px solid var(--colorIntent-borderLightBezel);
+      background-color: #000000;
+      background-color: var(--listing-badges-compassExclusiveBadgeColor); }
+    .uc-listingCard .uc-listingCard-body .uc-listingCard-cornerBox {
+      display: inline-block;
+      position: relative;
+      margin-right: 10px;
+      margin-right: var(--uc-listingCard-padding);
+      border-radius: 2px;
+      border-radius: var(--cx-borderRadius);
+      border: 1px solid transparent;
+      padding: 4px 4px 2px 4px;
+      text-overflow: ellipsis;
+      overflow-x: hidden;
+      font-size: 10px;
+      line-height: 10px;
+      color: #ffffff;
+      color: var(--colorIntent-background);
+      text-transform: uppercase;
+      z-index: 100;
+      z-index: var(--cx-zIndex-1);
+      font-family: "Compass Sans", Helvetica, Arial, sans-serif;
+      font-weight: 500;
+      font-style: normal; }
+  .uc-listingCard .uc-listingCard-content {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    padding: var(--uc-listingCard-padding) var(--uc-listingCard-contentPadding);
+    flex-grow: 1;
+    -webkit-box-ordinal-group: 3;
+    order: 2; }
+    .uc-listingCard .uc-listingCard-content .uc-listingCard-title {
+      margin-top: 0;
+      margin-bottom: 5px;
+      font-size: 16px;
+      line-height: 18px;
+      color: #000000;
+      color: var(--colorIntent-textTitle);
+      text-decoration: none;
+      font-family: "Compass Sans", Helvetica, Arial, sans-serif;
+      font-weight: bold;
+      font-style: normal; }
+    .uc-listingCard .uc-listingCard-content .uc-listingCard-subtitle {
+      margin-top: 0;
+      -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+      flex-grow: 1;
+      font-size: 12px;
+      line-height: 15px;
+      color: #acacac;
+      color: var(--colorIntent-textSubtle);
+      letter-spacing: 0.5px;
+      font-family: "Compass Sans", Helvetica, Arial, sans-serif;
+      font-weight: 400;
+      font-style: normal; }
+    .uc-listingCard .uc-listingCard-content .uc-listingCard-mainStats {
+      position: relative;
+      margin-top: 10px;
+      margin-top: var(--uc-listingCard-padding);
+      color: #000000;
+      color: var(--uc-listingCard-primaryTextColor);
+      font-size: 16px;
+      font-size: var(--uc-listingCard-fontSize--xlg);
+      line-height: 16px;
+      line-height: var(--uc-listingCard-lineHeight--xlg);
+      font-family: "Compass Sans", Helvetica, Arial, sans-serif;
+      font-weight: 400;
+      font-style: normal; }
+    .uc-listingCard .uc-listingCard-content .uc-listingCard-subStats {
+      position: relative;
+      padding-top: 10px;
+      padding-top: var(--uc-listingCard-padding);
+      height: 25px;
+      height: calc(var(--uc-listingCard-lineHeight--sm) + var(--uc-listingCard-padding));
+      color: #000000;
+      color: var(--uc-listingCard-primaryTextColor);
+      overflow: hidden;
+      font-size: 12px;
+      font-size: var(--uc-listingCard-fontSize--sm);
+      line-height: 15px;
+      line-height: var(--uc-listingCard-lineHeight--sm);
+      font-family: "Compass Sans", Helvetica, Arial, sans-serif;
+      font-weight: 400;
+      font-style: normal; }
+      .uc-listingCard .uc-listingCard-content .uc-listingCard-subStats .uc-listingCard-subStat:after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        top: 3px;
+        right: 0;
+        bottom: 2px;
+        border-right: 1px solid #acacac;
+        border-right: 1px solid var(--uc-listingCard-statDividerColor);
+        vertical-align: middle; }
+      .uc-listingCard .uc-listingCard-content .uc-listingCard-subStats .uc-listingCard-subStat:first-child {
+        padding-left: 0; }
+      .uc-listingCard .uc-listingCard-content .uc-listingCard-subStats .uc-listingCard-subStat {
+        display: inline-block;
+        position: relative;
+        padding: 0 10px;
+        padding: 0 var(--uc-listingCard-padding);
+        white-space: nowrap; }
+
+.splashHeader-title {
+  color: #fff !important; }
+
+.uc-listing-stickyHeaderContainer {
+  display: block !important; }
+
+.uc-stickyTrigger {
+  transition: all .1s ease-in-out;
+  transform: translateY(-100px); }
+  .uc-stickyTrigger.is-truck {
+    opacity: 1 !important;
+    transform: translateY(0px) !important; }
+
+main.browse .uc-listingCard {
+  border: 1px solid #dadada;
+  border: 1px solid var(--uc-listingCard-borderColor); }
+  main.browse .uc-listingCard:hover {
+    border: 1px solid #ccc; }
+main.browse .uc-listingCard-cornerBox--offMarket {
+  background-color: #ff2f00;
+  background-color: var(--listing-badges-offMarketStatusColor); }
+main.browse .browseFooter-marketInsightsTitle {
+  font-size: 33px; }
+
+main.quarterly #dropdown-custom-1 li a {
+  color: inherit;
+  display: block; }
+main.quarterly .uc-listingCard {
+  border: 1px solid #dadada;
+  border: 1px solid var(--uc-listingCard-borderColor); }
+  main.quarterly .uc-listingCard:hover {
+    border: 1px solid #ccc; }
+
+.textIntent-body--strong,
+.textIntent-body strong,
+.textIntent-caption1 strong,
+.textIntent-caption1--strong,
+.textIntent-caption2 strong,
+.textIntent-caption2--strong,
+.textIntent-title2 strong,
+.textIntent-title2--strong,
+strong.textIntent-body,
+strong.textIntent-caption1,
+strong.textIntent-caption2,
+strong.textIntent-title2 {
+  font-weight: bold; }
+
+.listing-page .eAaStu {
+  display: flex;
+  flex-direction: row; }
+  .listing-page .eAaStu .hECmhC {
+    background-color: black;
+    cursor: pointer;
+    border-right: 1px solid white; }
+  .listing-page .eAaStu .flickity-button {
+    position: relative;
+    background-color: #000;
+    border-radius: 0px !important;
+    left: 0;
+    width: 32px;
+    height: 72px;
+    opacity: 1;
+    border-right: 1px solid white;
+    border-left: 1px solid transparent !important;
+    order: 0; }
+    .listing-page .eAaStu .flickity-button.next {
+      order: 2;
+      float: right;
+      right: 0;
+      border-left: 1px solid white;
+      border-right: 1px solid transparent !important; }
+  .listing-page .eAaStu .flickity-viewport {
+    order: 1;
+    width: 100%; }
+
+#street-view {
+  height: 100%; }
+
+.dwzoQq,
+.gBshrd {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%; }
+
+.dwzoQq {
+  background-color: #ccc; }
+  .dwzoQq > div, .dwzoQq > div > div {
+    height: 488px; }
+
+.carousel.is-fullscreen .carousel-cell {
+  height: 100%; }
+
+main.cx-mainLayout.cx-mainLayout-mastheadDivider .splashHeader-needles {
+  flex-direction: row; }
+
+main.development.cx-mainLayout.cx-mainLayout-mastheadDivider .splashHeader-needles {
+  flex-direction: column; }
+
+.building .uc-listingInternalContacts-footerText {
+  font-size: 1.1em;
+  font-weight: bold; }
+.building .uc-listingDisclaimer {
+  color: #d3d7dc; }
+
+.overflow-hiden {
+  overflow-y: hidden; }
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,286 @@
+.sellLanding-agentsHeader {
+    margin-bottom: 40px;
+    border-top: 1px solid rgba(48, 51, 57, .15);
+    border-bottom: 1px solid rgba(48, 51, 57, .15);
+    padding: 24px 0;
+    text-align: left
+}
+
+.sellLanding-agentsStatistics {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    margin: 0 auto
+}
+
+.sellLanding-agentsStatistic {
+    padding: 24px;
+    width: -webkit-min-content;
+    width: -moz-min-content;
+    width: min-content;
+    background-color: #3e4247
+}
+
+.sellLanding-agentsStatisticValue {
+    margin: 0;
+    border-bottom: 1px solid #646971;
+    padding-bottom: 8px;
+    color: #fff;
+    font-size: 50px;
+    line-height: normal
+}
+
+.sellLanding-agentsStatisticField {
+    color: #a9afb6
+}
+
+.splashHeader {
+    margin-bottom: 48px;
+    color: #fff;
+    /* background-color: #000 */
+}
+
+.splashHeader-columns {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0 auto;
+    padding: 100px 24px;
+    width: 100%;
+    max-width: 1170px
+}
+
+.splashHeader-column {
+    position: relative;
+    width: 50%
+}
+
+.splashHeader-column:first-child {
+    padding-right: 40px
+}
+
+.splashHeader-column:last-child {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column
+}
+
+.splashHeader-title {
+    margin: 0;
+    font-size: 75px;
+    line-height: 1.25em
+}
+
+.splashHeader-subtitle {
+    margin: 24px 0 40px;
+    width: 70%;
+    font-size: 16px
+}
+
+.splashHeader-videoWrapper {
+    margin-bottom: -100px;
+    -webkit-transform: translatey(48px);
+    transform: translatey(48px)
+}
+
+.splashHeader-video {
+    width: 100%;
+    height: 100%
+}
+
+.splashHeader-needles {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: auto 0 0 auto;
+    padding: 24px 0;
+    overflow: hidden;
+    list-style: none
+}
+
+.splashHeader-needles>li {
+    margin-right: 16px;
+    border-top: 1px solid;
+    width: 48px
+}
+
+@media (max-width:800px) {
+    .splashHeader-columns {
+        display: block;
+        padding-top: 24px
+    }
+    .splashHeader-column {
+        width: 100%
+    }
+    .splashHeader-title {
+        font-size: 50px
+    }
+    .splashHeader-subtitle {
+        margin-bottom: 0
+    }
+    .splashHeader-needles {
+        display: none
+    }
+}
+
+.sellLanding-marketInsightsModule {
+    text-align: left;
+    background-color: #eaebf0
+}
+
+.sellLanding-marketInsightsModule .sellLanding-column {
+    padding: 24px
+}
+
+.marketInsightsInput-form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    margin-top: 24px;
+    width: 100%
+}
+
+@media (min-width:888px) {
+    .marketInsightsInput-form {
+        max-width: 240px
+    }
+}
+
+.marketInsightsInput-btn {
+    margin-left: 8px
+}
+
+.sellForm-formElements {
+    display: grid;
+    margin: 24px auto;
+    max-width: 800px;
+    grid-template-columns: 1fr;
+    grid-gap: 24px
+}
+
+@media (min-width:888px) {
+    .sellForm-formElements {
+        grid-template-columns: 1fr 1fr
+    }
+}
+
+.sellLanding-section {
+    margin: 32px 0;
+    text-align: center
+}
+
+.sellLanding-columns {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column
+}
+
+@media (min-width:888px) {
+    .sellLanding-columns {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row
+    }
+}
+
+.sellLanding-column {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1
+}
+
+@media (min-width:888px) {
+    .sellLanding-column {
+        padding: 24px
+    }
+}
+
+.sellLanding-column img {
+    max-width: 100%
+}
+
+.sellLanding-legal {
+    color: #a9afb6
+}
+
+body {
+    margin: 0
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+body {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-height: 100vh;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-family: Compass Sans, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal
+}
+
+main {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1
+}
+
+main .ng-cloak,
+main .ng-hide:not(.ng-hide-animate),
+main .x-ng-cloak,
+main [data-ng-cloak],
+main [ng-cloak],
+main [ng\:cloak],
+main [x-ng-cloak] {
+    display: none!important
+}
+
+img {
+    vertical-align: middle
+}
+
+a {
+    text-decoration: none
+}
+
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none
+}
+
+h1,
+h2,
+h3 {
+    font: inherit
+}

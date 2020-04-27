@@ -1,0 +1,543 @@
+:root {
+    --drawerWidth: 286px;
+    --flyoutItemHeight: 39px;
+    --navHeight: 48px;
+    --locationLookupHeight: 40px;
+    --locationLookupIconSize: 24px;
+  }
+  
+  .uc-corpNav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid var(--colorIntent-backgroundDropShadow);
+    width: 100%;
+    height: 48px;
+    height: var(--navHeight);
+    color: #000000;
+    color: var(--colorIntent-brandDark);
+    background-color: #ffffff;
+    background-color: var(--colorIntent-brandLight);
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+  }
+  
+  .uc-corpNav--transparent {
+    position: absolute;
+    border-color: rgba(255, 255, 255, 0.7);
+    color: #ffffff;
+    color: var(--colorIntent-brandLight);
+    background-color: transparent;
+    z-index: 1000;
+    z-index: var(--cx-zIndex-10);
+  }
+  
+  .uc-corpNav--transparent::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: -80%;
+    left: 0;
+    z-index: -1;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.5)), to(transparent));
+    background: linear-gradient(180deg, rgba(0,0,0,0.5), transparent);
+  }
+  
+  .uc-corpNav--transparent .uc-corpNav-drawer {
+    color: #000000;
+    color: var(--colorIntent-brandDark);
+    background-color: #ffffff;
+    background-color: var(--colorIntent-brandLight);
+  }
+  
+  .uc-corpNav * {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  
+  .uc-corpNav-a {
+    text-decoration: none;
+  }
+  
+  .uc-corpNav-button {
+    background-color: transparent;
+  }
+  
+  .uc-corpNav-svg {
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    fill: currentColor;
+  }
+  
+  .uc-corpNav-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 100%;
+  }
+  
+  .uc-corpNav-hamburger {
+    padding: 0 8px 0 16px;
+    width: 48px;
+    height: 100%;
+    cursor: pointer;
+  }
+  
+  .uc-corpNav-logotype {
+    padding-right: 24px;
+    width: 123px;
+    height: 100%;
+    color: inherit;
+  }
+  
+  .uc-corpNav-menuWrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100%;
+  }
+  
+  .uc-corpNav-menu {
+    display: none;
+    padding: 0 10px;
+    height: 100%;
+  }
+  
+  .uc-corpNav-userMenu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  
+  .uc-corpNav-menuItem {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border: none;
+    padding: 0 10px;
+    height: 100%;
+    outline: none;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    color: inherit;
+    font-weight: 600;
+    font-size: 13px !important;
+    -webkit-transition: all 0.1s ease;
+    transition: all 0.1s ease;
+  }
+  
+  .uc-corpNav-dropdown {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+  }
+  
+  .uc-corpNav-dropdownIcon {
+    position: relative;
+    top: 1px;
+    margin-left: 6px;
+    width: 14px;
+    height: 100%;
+    -webkit-transform: scale(1, 0.75);
+            transform: scale(1, 0.75);
+  }
+  
+  .uc-corpNav-flyout {
+    display: none;
+    position: absolute;
+    top: 48px;
+    top: var(--navHeight);
+    border: 1px solid #dadada;
+    border: var(--cx-borderWidth) solid var(--colorIntent-menuBorder);
+    padding-top: 14px;
+    padding-bottom: 18px;
+    max-height: 307px;
+    max-height: calc(7 * var(--flyoutItemHeight) + 34px);
+    overflow-y: auto;
+    white-space: nowrap;
+    background-color: #ffffff;
+    background-color: var(--colorIntent-background);
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+    z-index: 1000;
+    z-index: var(--cx-zIndex-10);
+  }
+  
+  .uc-corpNav-dropdown.is-active > .uc-corpNav-flyout {
+    display: block;
+  }
+  
+  .uc-corpNav-flyoutItem {
+    padding: 0 30px 0 16px;
+    height: 39px;
+    height: var(--flyoutItemHeight);
+    font-weight: var(--font-weightRegular);
+    font-weight: var(--font-weightRegular);
+    color: #000000;
+    color: var(--colorIntent-brandDark);
+    cursor: pointer;
+  }
+  
+  .uc-corpNav-geoDropdown {
+    display: none;
+  }
+  
+  .uc-corpNav-avatar {
+    width: 44px;
+  }
+  
+  .uc-corpNav-drawer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    position: fixed;
+    left: -286px;
+    left: calc(var(--drawerWidth) * -1);
+    width: 286px;
+    width: var(--drawerWidth);
+    height: 100vh;
+    background-color: inherit;
+    overflow-y: auto;
+    -webkit-transition: left 0.3s ease;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    z-index: var(--cx-zIndex-10);
+  }
+  
+  .uc-corpNav-backdrop {
+    position: fixed;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+    background-color: var(--colorIntent-brandDark);
+    opacity: 0.5;
+    cursor: pointer;
+    visibility: hidden;
+    -webkit-transition: left 0.3s ease;
+    transition: left 0.3s ease;
+    z-index: 900;
+    z-index: var(--cx-zIndex-9);
+  }
+  
+  .uc-corpNav-drawer.is-active {
+    left: 0;
+  }
+  
+  .uc-corpNav-drawer.is-active > .uc-corpNav-backdrop {
+    left: 286px;
+    left: var(--drawerWidth);
+    visibility: visible;
+  }
+  
+  .uc-corpNav-close {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 0 16px;
+    min-height: 48px;
+    min-height: var(--navHeight);
+    font-weight: var(--font-weightMedium);
+    font-weight: var(--font-weightMedium);
+    color: inherit;
+    cursor: pointer;
+  }
+  
+  .uc-corpNav-closeIcon {
+    margin-right: 8px;
+    width: 24px;
+    height: 16px;
+  }
+  
+  .uc-corpNav-auth {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 16px;
+    min-height: 40px;
+  }
+  
+  .uc-corpNav-auth a:nth-child(2) {
+    margin-left: 8px;
+  }
+  
+  .uc-corpNav-auth button {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
+  
+  .uc-corpNav-drawer .uc-corpNav-menuItem {
+    padding-left: 16px;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    min-height: 40px;
+    max-height: 48px;
+  }
+  
+  .uc-corpNav-geoSelectWrapper {
+    margin-left: 16px;
+    margin-top: 44px;
+  }
+  
+  .uc-corpNav-geoSelectWrapper::after {
+    content: '';
+    display: inline-block;
+    position: relative;
+    top: 6px;
+    right: 28px;
+    width: 14px;
+    height: 16px;
+    pointer-events: none;
+  
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%0A%20%20%20%20viewBox%3D%220%200%2016%2016%22%3E%0A%20%20%3Cpath%20d%3D%22M8.41%2C10.78L12.5%2C5h-9l4.09%2C5.78A0.5%2C0.5%2C0%2C0%2C0%2C8.41%2C10.78Z%22%2F%3E%0A%3Cdefs%3E%3Cstyle%3Epath%20%7B%0A%20%20%20%20%20%20fill%3A%20%23000000%3B%0A%20%20%20%20%20%20transform%3A%20scale%281%2C%200.75%29%3B%0A%20%20%20%20%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3C%2Fsvg%3E%0A')
+  }
+  
+  .uc-corpNav-geoSelect {
+    border: 1px #dadada solid;
+    border: 1px var(--colorIntent-formElementBorder) solid;
+    border-radius: 0;
+    padding: 2px 8px;
+    width: 200px;
+    font-weight: var(--font-weightMedium);
+    font-weight: var(--font-weightMedium);
+    line-height: 1.3em;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    cursor: pointer;
+  
+    background-color: #ffffff;
+  
+    background-color: var(--colorIntent-formElementBackground);
+    color: #acacac;
+    color: var(--colorIntent-formElementPlaceholder);
+  }
+  
+  .uc-corpNav-geoSelect:active,
+  .uc-corpNav-geoSelect:focus {
+    border-color: #2f009d;
+    border-color: var(--colorIntent-formElementBorderActive);
+    outline: none;
+  }
+  
+  /* Start location-lookup styles block */
+  
+  .uc-locationLookup {
+    margin: 4px auto 0;
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+    width: 450px;
+    background: #ffffff;
+    background: var(--colorIntent-brandLight);
+    z-index: 1;
+  }
+  
+  .uc-locationLookup-searchContainer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    min-width: 420px;
+    height: 40px;
+    height: var(--locationLookupHeight);
+  }
+  
+  .uc-locationLookup-inputContainer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    padding: 0;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  /*
+   * Target {containerClass} button to override .uc-corpNav button
+   */
+  
+  .uc-locationLookup-searchButton {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    padding: 0;
+    width: 40px;
+    height: 100%;
+  }
+  
+  .uc-locationLookup-searchIcon {
+    margin: auto;
+    width: 24px;
+    width: var(--locationLookupIconSize);
+    height: 24px;
+    height: var(--locationLookupIconSize);
+  }
+  
+  .uc-locationLookup-inlineSearchIcon {
+    display: none;
+    /* The input itself has left padding baked in, so the right margin here is 8px instead of 16px. */
+    margin: 8px 8px 8px 16px;
+    width: 24px;
+    width: var(--locationLookupIconSize);
+    height: 24px;
+    height: var(--locationLookupIconSize);
+  }
+  
+  .uc-locationLookup-optionsContainer {
+    display: none;
+  }
+  
+  .uc-locationLookup-clearButton {
+    border: 0;
+  }
+  
+  /* End location-lookup styles block */
+  
+  .uc-corpNav-appBtns {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 48px;
+    margin-left: 16px;
+    height: 34px;
+  }
+  
+  .uc-corpNav-appBtn {
+    margin-right: 16px;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+  
+  .uc-corpNav-androidBtn {
+    background-image: url(https://images.ctfassets.net/x01lqw608u1m/5IuqcWiWxI4ZhGAsBRGE7v/d78c00f0311bd3465720f7c574e1fb62/playstore.png);
+  }
+  
+  .uc-corpNav-iosBtn {
+    background-image: url(https://images.ctfassets.net/x01lqw608u1m/3X7x96c8UYp8qoSgXRtVhE/5cde7194bab3e7ccb3d30be21112a522/appstore.png);
+  }
+  
+  .uc-corpNav-drawer .uc-corpNav-sectionSeparator {
+    position: relative;
+  }
+  
+  .uc-corpNav-drawer .uc-corpNav-sectionSeparator::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -24px;
+    border-top: 1px solid;
+    width: 24px;
+    opacity: 0.15;
+    pointer-events: none;
+  }
+  
+  @media (min-width: 888px) {
+    .uc-corpNav-hamburger {
+      display: none;
+    }
+  
+    .uc-corpNav-logotype {
+      padding-left: 24px;
+      width: 161px;
+    }
+  
+    .uc-corpNav-geoDropdown {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+    }
+  
+    .uc-corpNav-menu {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+    }
+  
+    .uc-corpNav-userMenu::before {
+      content: '';
+      position: relative;
+      top: 17px;
+      left: -10px;
+      border-left: 1px solid;
+      height: 16px;
+      opacity: 0.15;
+    }
+  
+    .uc-corpNav-drawer {
+      display: none;
+    }
+  }
+  
+  @media (hover: hover) {
+    .uc-corpNav-menuItem:hover {
+      color: #ffffff;
+      color: var(--colorIntent-brandLight);
+      background-color: #5000ff;
+      background-color: var(--colorIntent-actionHover);
+    }
+  
+    .uc-corpNav-geoSelectWrapper:hover::after {
+      background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%0A%20%20%20%20viewBox%3D%220%200%2016%2016%22%3E%0A%20%20%3Cpath%20d%3D%22M8.41%2C10.78L12.5%2C5h-9l4.09%2C5.78A0.5%2C0.5%2C0%2C0%2C0%2C8.41%2C10.78Z%22%2F%3E%0A%3Cdefs%3E%3Cstyle%3Epath%20%7B%0A%20%20%20%20%20%20%20%20fill%3A%20%235000ff%3B%0A%20%20%20%20%20%20%20%20transform%3A%20scale%281%2C%200.75%29%3B%0A%20%20%20%20%20%20%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3C%2Fsvg%3E%0A')
+    }
+  
+    .uc-corpNav-geoSelect:hover {
+      border-color: #5000ff;
+      border-color: var(--colorIntent-formElementBorderHover);
+    }
+  }
+  
+  .uc-corpNav-menuItem:active,
+  .uc-corpNav-menuItem.is-active,
+  .uc-corpNav-flyoutItem.is-selected {
+    color: #ffffff;
+    color: var(--colorIntent-brandLight);
+    background-color: #2f009d;
+    background-color: var(--colorIntent-actionPressed);
+  }
+  
+  .uc-corpNav-geoSelect:active,
+  .uc-corpNav-geoSelect:focus {
+    border-color: #2f009d;
+    border-color: var(--colorIntent-formElementBorderActive);
+    outline: none;
+  }

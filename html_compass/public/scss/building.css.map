@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAGY,wBAAI;EACA,UAAU,EAAE,KAAK;;AAMjC,iBAAkB;EACd,YAAY,EAAE,YAAY",
+"sources": ["building.scss"],
+"names": [],
+"file": "building.css"
+}

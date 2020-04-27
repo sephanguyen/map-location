@@ -1,0 +1,174 @@
+/*--------------------
+SEARCH
+--------------------*/
+
+.searchform {
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+    max-width: 885px;
+    margin: auto;
+    form .btn {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    .smalltitle {
+        color: #000;
+        font-size: 1em;
+        margin-bottom: 10px;
+    }
+    .smalltitle:after {
+        bottom: -8px;
+    }
+    .thearrow {
+        -webkit-animation: jump 1.5s ease 0s infinite normal;
+        animation: jump 1.5s ease 0s infinite normal;
+        display: inline-block;
+    }
+    .form-control {
+        border-color: #fff;
+        border-width: 2px;
+    }
+    .input-group-lg>.form-control,
+    .input-group-lg>.input-group-addon,
+    .input-group-lg>.input-group-btn>.btn {
+        height: 60px;
+        font-size: 20px;
+        line-height: 1;
+        font-family: initial;
+    }
+    .input-group-lg>.input-group-btn>.btn:not(.btn-default) {
+        border-right: 1px solid #e9e9e9 !important;
+    }
+    .input-group-lg>.input-group-btn>.btn-default {
+        font-size: 42px;
+        padding-top: 5px;
+    }
+    .search-options {
+        background: #fff;
+        padding-left: 5px;
+        color: #999;
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+    }
+    .input-group-lg .search-options {
+        padding-left: 10px;
+    }
+    .search-option {
+        display: inline-block;
+        margin-left: 5px;
+    }
+    .search-option input {
+        display: none;
+    }
+    .search-option label {
+        margin: 0;
+        cursor: pointer;
+    }
+    .search-option i {
+        font-size: 25px;
+        line-height: 1;
+        vertical-align: middle;
+    }
+    .search-option span {
+        display: none;
+    }
+    .search-option input:checked+label i {
+        color: var(--colorIntent-actionableFilledBackground);
+    }
+    .searchpopholder .popover,
+    .bdsgdlistpopholder .popover {
+        white-space: nowrap;
+        color: var(--colorIntent-actionableFilledBackground);
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    .bdsgdlistpopholder .popover .popover-title {
+        display: none;
+    }
+    .bdsgdlistpopholder .popover {
+        -ms-transform: translate(250px, 0);
+        -webkit-transform: translate(250px, 0x);
+        transform: translate(250px, 0);
+    }
+    .searchsuggest {
+        position: relative;
+        width: 100%;
+        height: 0;
+        color: #1c2e2f;
+        z-index: 1061;
+        text-align: left;
+        display: none;
+    }
+    .locationlistwrapper {
+        position: absolute;
+        top: 5px;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        background: #fff;
+        border-radius: 6px;
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    .searchsuggest .locationlist {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .locationlist li {
+        margin: 0;
+        padding: 5px;
+        list-style: none;
+        display: block;
+        cursor: pointer;
+    }
+    .locationlist li:before {
+        content: "\f041";
+        font-size: 1.2em;
+        line-height: 1;
+        margin-right: 10px;
+        font-family: 'dgtticon' !important;
+        speak: none;
+        vertical-align: middle;
+    }
+    .locationlist li:hover {
+        background: #e9e9e9;
+    }
+    .locationlist.apartmentlist li:before {
+        content: "\f084";
+        font-family: 'FontAwesome' !important;
+    }
+    @font-face {
+        font-family: 'dgtticon';
+        src: url('../fonts/dgtticon.eot?l3rg40');
+        src: url('../fonts/dgtticon.eot?l3rg40#iefix') format('embedded-opentype'), url('../fonts/dgtticon.ttf?l3rg40') format('truetype'), url('../fonts/dgtticon.woff?l3rg40') format('woff'), url('../fonts/dgtticon.svg?l3rg40#dgtticon') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    [class^="icon-"],
+    [class*=" icon-"] {
+        /* use !important to prevent issues with browser extensions that change fonts */
+        font-family: 'dgtticon' !important;
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    .icon-house:before {
+        content: "\e90b";
+    }
+    .icon-building:before {
+        content: "\e90c";
+    }
+    .icon-chevron-right:before {
+        content: "\f054";
+    }
+    .input-group-btn .btn-default:not(.btn-fill) {
+        border-color: var(--colorIntent-actionableFilledBackground);
+    }
+}

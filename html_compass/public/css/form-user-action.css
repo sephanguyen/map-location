@@ -1,0 +1,252 @@
+.form-user-action h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-family: 'rv-font2', Arial, Helvetica, sans-serif !important;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 500;
+  margin-top: 20px; }
+.form-user-action .formcol .form-control,
+.form-user-action .formcol .form-control:focus {
+  border: 0;
+  border-bottom: 4px solid #e5e5e5;
+  padding: 8px 0 10px 0;
+  border-radius: 0;
+  margin: 0; }
+.form-user-action .btn-facebook {
+  background: #4267b2;
+  border-color: #4267b2;
+  color: #fff !important; }
+.form-user-action .btn-google {
+  background: #dd4b39;
+  border-color: #dd4b39;
+  color: #fff !important; }
+.form-user-action .btn [class*=" icon-"],
+.form-user-action .btn [class^=icon-] {
+  vertical-align: middle; }
+.form-user-action .btn-icon .fa,
+.form-user-action .btn-icon [class*=" icon-"],
+.form-user-action .btn-icon [class^=icon-] {
+  font-size: 1.6em;
+  vertical-align: sub;
+  line-height: 1em;
+  margin-right: 3px; }
+.form-user-action .checkbox,
+.form-user-action .radio {
+  padding-left: 22px;
+  margin: 0;
+  position: relative;
+  -webkit-transition: color .25s linear;
+  transition: color .25s linear;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer; }
+.form-user-action .checkbox input,
+.form-user-action .radio input {
+  outline: 0 !important;
+  display: none; }
+.form-user-action .checkbox .icons,
+.form-user-action .radio .icons {
+  color: #ddd;
+  display: block;
+  height: 20px;
+  left: 0;
+  position: absolute;
+  top: -3px;
+  text-align: center;
+  line-height: 21px;
+  font-size: 20px;
+  cursor: pointer;
+  -webkit-transition: color .2s linear;
+  transition: color .2s linear; }
+.form-user-action .radio .icons {
+  top: 0; }
+.form-user-action .checkbox .icons .first-icon,
+.form-user-action .checkbox .icons .second-icon,
+.form-user-action .radio .icons .first-icon,
+.form-user-action .radio .icons .second-icon {
+  display: inline-table;
+  position: absolute;
+  background-color: transparent;
+  margin: 0;
+  opacity: 1; }
+.form-user-action .checkbox .icons .second-icon,
+.form-user-action .radio .icons .second-icon {
+  opacity: 0; }
+.form-user-action .checkbox:hover,
+.form-user-action .radio:hover {
+  -webkit-transition: color .2s linear;
+  transition: color .2s linear; }
+.form-user-action .checkbox:hover .first-icon,
+.form-user-action .radio:hover .first-icon {
+  opacity: 0; }
+.form-user-action .checkbox:hover .second-icon,
+.form-user-action .radio:hover .second-icon {
+  opacity: 1; }
+.form-user-action .checkbox.checked .icons,
+.form-user-action .radio.checked .icons {
+  color: #f5891f; }
+.form-user-action .checkbox.checked .first-icon,
+.form-user-action .radio.checked .first-icon {
+  opacity: 0; }
+.form-user-action .checkbox.checked .second-icon,
+.form-user-action .radio.checked .second-icon {
+  opacity: 1;
+  color: #f5891f;
+  -webkit-transition: color .2s linear;
+  transition: color .2s linear; }
+.form-user-action .checkbox.disabled,
+.form-user-action .radio.disabled {
+  cursor: default;
+  color: #ddd !important; }
+.form-user-action .checkbox.disabled .icons,
+.form-user-action .radio.disabled .icons {
+  color: #ddd !important; }
+.form-user-action .checkbox.disabled .first-icon,
+.form-user-action .radio.disabled .first-icon {
+  opacity: 1; }
+.form-user-action .checkbox.disabled .second-icon,
+.form-user-action .radio.disabled .second-icon {
+  opacity: 0; }
+.form-user-action .checkbox.disabled.checked .icons,
+.form-user-action .radio.disabled.checked .icons {
+  color: #ddd; }
+.form-user-action .checkbox.disabled.checked .first-icon,
+.form-user-action .radio.disabled.checked .first-icon {
+  opacity: 0; }
+.form-user-action .checkbox.disabled.checked .second-icon,
+.form-user-action .radio.disabled.checked .second-icon {
+  opacity: 1;
+  color: #d9d9d9; }
+.form-user-action .middleofline {
+  position: relative;
+  text-align: center;
+  display: inline-block;
+  bottom: -30px;
+  background: #f3f4f7;
+  text-transform: uppercase;
+  padding: 0 15px;
+  color: #444c59;
+  font-size: 14px; }
+.form-user-action .formcol .form-control,
+.form-user-action .formcol .form-control:focus {
+  border: 0;
+  border-bottom: 4px solid #e5e5e5;
+  padding: 8px 0 10px 0;
+  border-radius: 0;
+  margin: 0; }
+.form-user-action .selectwrap {
+  position: relative;
+  overflow: hidden; }
+.form-user-action .selectwrap.form-control {
+  padding: 0 !important; }
+.form-user-action select,
+.form-user-action select.form-control,
+.form-user-action select:focus {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: 0 !important;
+  margin: 0;
+  height: 43px;
+  outline: 0;
+  background: 0 0 !important;
+  padding-right: 20px;
+  width: 115% !important;
+  font-size: 16px;
+  line-height: 18px;
+  transform-origin: left center;
+  transform: scale(0.875); }
+.form-user-action .selectwrap:after {
+  content: "\f0d7";
+  font-family: FontAwesome;
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  line-height: 1;
+  font-size: 16px;
+  pointer-events: none; }
+.form-user-action .login-by-social a button {
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  padding: 10px;
+  display: block;
+  font-weight: 600;
+  position: relative;
+  text-decoration: none !important;
+  font-size: 16px;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.07); }
+.form-user-action .remember-me {
+  color: rgba(68, 76, 89, 0.5);
+  font-size: 14px; }
+
+#myModal-login .form-control,
+#myModal-register .form-control {
+  background-color: transparent; }
+#myModal-login *:not([class*="fa-"]),
+#myModal-register *:not([class*="fa-"]) {
+  font-family: 'harmonia', Arial, Helvetica, sans-serif; }
+
+.submit-btn {
+  font-weight: 600; }
+
+a[data-target="#myModal-register"],
+a[data-target="#myModal-login"],
+a.blue-green {
+  color: #337588 !important;
+  font-weight: 600;
+  line-height: 1;
+  opacity: .86;
+  font-size: 14px;
+  padding-left: 5px;
+  cursor: pointer;
+  background: transparent !important;
+  border: none; }
+
+p.register-p {
+  color: #444c59;
+  font-size: 14px;
+  opacity: .86; }
+
+button[type="button"].submit-btn {
+  height: 50px; }
+
+#myModal-login .modal-dialog .modal-content,
+#myModal-register .modal-dialog .modal-content,
+#myModal-forgot-pwd .modal-dialog .modal-content,
+#myModal-login .modal-dialog .modal-content input ,
+#myModal-register .modal-dialog .modal-content input ,
+#myModal-forgot-pwd .modal-dialog .modal-content input {
+  background-color: #f3f4f7; }
+
+
+#myModal-login .modal-dialog .close,
+#myModal-register .modal-dialog .close,
+#myModal-forgot-pwd .modal-dialog .close {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #fff;
+    -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+    -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 43px;
+    border: 0;
+    cursor: pointer;
+    z-index: 9999;
+    opacity: 1;
+} 
+
+#myModal-forgot-pwd .modal-dialog .close {
+  line-height: 42px; }
+
+/*# sourceMappingURL=form-user-action.css.map */

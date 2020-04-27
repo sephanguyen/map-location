@@ -1,0 +1,149 @@
+.status-bottom-red {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    padding: 8px 0;
+    color: #fff;
+    background: rgba(199, 37, 40, .86);
+    font-size: 14px;
+    font-family: 'rv-font1', Arial, Helvetica, sans-serif;
+    width: 100%;
+    z-index: 2
+}
+
+.status-bottom-red:hover {
+    color: #fff
+}
+
+.status-bottom-gray {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    padding: 8px 0;
+    color: #fff;
+    background: rgba(48, 51, 58, .86);
+    font-size: 14px;
+    font-family: 'rv-font1', Arial, Helvetica, sans-serif;
+    width: 100%;
+    z-index: 2
+}
+
+.status-bottom-gray:hover {
+    color: #fff
+}
+
+.status-top-left {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    text-align: center;
+    padding: 7px 7px 5px 7px;
+    color: #fff;
+    background: rgba(199, 37, 40, .86);
+    font-size: 12px;
+    font-family: 'rv-font1', Arial, Helvetica, sans-serif;
+    z-index: 2;
+    border-radius: 2px;
+    text-transform: uppercase
+}
+
+.status-top-left:hover {
+    color: #fff
+}
+
+@font-face {
+    font-family: 'Tiempos';
+    src: url(../fonts//TiemposHeadline-Medium.eot);
+    src: url('../fonts//TiemposHeadline-Medium.eot?#iefix') format('embedded-opentype'), url(../fonts//TiemposHeadline-Medium.woff) format('woff'), url(../fonts//TiemposHeadline-Medium.ttf) format('truetype'), url('../fonts//TiemposHeadline-Medium.svg#roboto_condensedregular') format('svg');
+    font-weight: 400
+}
+
+@font-face {
+    font-family: 'Tiempos';
+    src: url(../fonts//TiemposHeadline-Regular.eot);
+    src: url('../fonts//TiemposHeadline-Regular.eot?#iefix') format('embedded-opentype'), url(../fonts//TiemposHeadline-Regular.woff) format('woff'), url(../fonts//TiemposHeadline-Regular.ttf) format('truetype'), url('../fonts//TiemposHeadline-Regular.svg#roboto_condensedregular') format('svg');
+    font-weight: 200
+}
+
+@font-face {
+    font-family: 'rever-icon';
+    src: url(../fonts//ReverIcons.eot);
+    src: url('../fonts//ReverIcons.eot?#iefix') format('embedded-opentype'), url(../fonts//ReverIcons.woff) format('woff'), url(../fonts//ReverIcons.ttf) format('truetype'), url('../fonts//ReverIcons.svg#roboto_condensedregular') format('svg')
+}
+
+@font-face {
+    font-family: 'rv-font1';
+    src: url(../fonts/RV-Harmonia-Regular.eot);
+    src: url('../fonts/RV-Harmonia-Regular.eot?#iefix') format('embedded-opentype'), url(../fonts/RV-Harmonia-Regular.woff) format('woff'), url(../fonts/RV-Harmonia-Regular.ttf) format('truetype'), url('../fonts/RV-Harmonia-Regular.svg#roboto_condensedregular') format('svg');
+    font-weight: 400
+}
+
+@font-face {
+    font-family: 'rv-font1';
+    src: url(../fonts/RV-Harmonia-SemiBold.eot);
+    src: url('../fonts/RV-Harmonia-SemiBold.eot?#iefix') format('embedded-opentype'), url(../fonts/RV-Harmonia-SemiBold.woff) format('woff'), url(../fonts/RV-Harmonia-SemiBold.ttf) format('truetype'), url('../fonts/RV-Harmonia-SemiBold.svg#roboto_condensedregular') format('svg');
+    font-weight: 500
+}
+
+@font-face {
+    font-family: 'rv-font1';
+    src: url(../fonts/RV-Harmonia-Bold.eot);
+    src: url('../fonts/RV-Harmonia-Bold.eot?#iefix') format('embedded-opentype'), url(../fonts/RV-Harmonia-Bold.woff) format('woff'), url(../fonts/RV-Harmonia-Bold.ttf) format('truetype'), url('../fonts/RV-Harmonia-Bold.svg#roboto_condensedregular') format('svg');
+    font-weight: 600
+}
+
+@font-face {
+    font-family: 'rv-font2';
+    src: url(../fonts/TiemposHeadline-Medium.eot);
+    src: url('../fonts/TiemposHeadline-Medium.eot?#iefix') format('embedded-opentype'), url(../fonts/TiemposHeadline-Medium.woff) format('woff'), url(../fonts/TiemposHeadline-Medium.ttf) format('truetype'), url('../fonts/TiemposHeadline-Medium.svg#roboto_condensedregular') format('svg');
+    font-weight: 500
+}
+
+.font-tiempos-h2 {
+    font-family: 'rv-font2', Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.9;
+    color: #30333a
+}
+
+.font-rvharmonia {
+    font-size: 16px;
+    font-family: 'RVHarmonia', Arial, Helvetica, sans-serif;
+    color: #fff
+}
+
+.btn-primary {
+    display: inline-block;
+    width: 100%;
+    margin: 0 auto;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 16px;
+    max-width: -webkit-fit-content;
+    max-width: -moz-fit-content;
+    max-width: fit-content;
+    min-width: -webkit-fit-content;
+    min-width: -moz-fit-content;
+    min-width: fit-content;
+    min-width: -moz-available;
+    max-width: -moz-available;
+    text-align: center;
+    border-radius: 2px;
+    padding: 0 20px;
+    white-space: nowrap
+}
+
+.btn-black-outline {
+    color: #30333a;
+    border: 1px solid #30333a;
+    background: transparent
+}
+
+.description-block {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #838383;
+    margin-bottom: 20px;
+    z-index: 2
+}

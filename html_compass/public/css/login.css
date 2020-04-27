@@ -1,0 +1,292 @@
+.uc-authenticationForm {
+    display: block;
+    padding: 40px;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+}
+
+
+/* Responsive design shares queries with cx-modals, since these often are modals anyway. */
+
+@media (max-width: 415px),
+(max-width: 689px) and (orientation: landscape) {
+    .uc-authenticationForm {
+        padding-right: 20px;
+        padding-left: 20px
+    }
+}
+
+
+/* Modal is using deprecated cx-brand-modal which breaks close icon placement */
+
+.uc-authenticationForm-closeIcon {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+
+.uc-authenticationForm-header {
+    font-size: 30px;
+    line-height: 1.3em;
+    color: rgb(48, 51, 57);
+    font-family: "Compass Serif", Times, "Times New Roman", serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+    text-align: center;
+}
+
+@media (max-width: 689px) {
+    .uc-authenticationForm-header {
+        font-size: 24px;
+    }
+}
+
+.uc-authenticationForm-dash:after {
+    content: '';
+    display: block;
+    margin: 16px auto 0;
+    border-bottom: 2px solid rgb(0, 0, 0);
+    width: 36px;
+    text-align: center;
+}
+
+.uc-authenticationForm-description {
+    font-size: 14px;
+    line-height: 1.5em;
+    color: rgb(62, 66, 71);
+    font-family: "Compass Sans", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 16px 0;
+    text-align: center;
+}
+
+@media (max-width: 689px) {
+    .uc-authenticationForm-description {
+        font-size: 14px;
+    }
+}
+
+
+/* Description styling when there's no button at the bottom - requires less margin */
+
+.uc-authenticationForm-description--noButton {
+    margin-bottom: 6px;
+}
+
+.uc-authenticationForm-inputGroup {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.uc-authenticationForm-inputGroup+.cx-formElement,
+.uc-authenticationForm .u-unstyledFieldset>.cx-formElement+.cx-formElement,
+.uc-authenticationForm-loginControls {
+    margin-top: 8px;
+}
+
+.uc-authenticationForm-inputGroup>.cx-formElement+.cx-formElement {
+    margin-left: 8px;
+}
+
+.uc-authenticationForm-inputGroup .cx-formElement {
+    width: 50%;
+}
+
+.uc-authenticationForm .cx-formElement-errorMessage {
+    margin-bottom: -5px;
+    font-size: 12px;
+}
+
+.uc-authenticationForm-forgotPassword {
+    color: rgb(0, 119, 154);
+    fill: rgb(0, 119, 154);
+    text-decoration: none;
+    -webkit-transition: border-color, background, color, fill 100ms ease, -webkit-box-shadow;
+    transition: border-color, background, color, fill 100ms ease, -webkit-box-shadow;
+    transition: border-color, background, box-shadow, color, fill 100ms ease;
+    transition: border-color, background, box-shadow, color, fill 100ms ease, -webkit-box-shadow;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 1.33em;
+    color: rgb(169, 175, 182);
+    font-family: "Compass Sans", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    position: absolute;
+    top: 0;
+    right: 5px;
+    padding: 12px 5px;
+}
+
+.uc-authenticationForm-forgotPassword:hover,
+.uc-authenticationForm-forgotPassword:active,
+.uc-authenticationForm-forgotPassword:focus {
+    color: rgb(0, 97, 125);
+    fill: rgb(0, 97, 125);
+    outline: none;
+}
+
+.uc-authenticationForm-forgotPassword:visited {
+    color: rgb(0, 119, 154);
+}
+
+.uc-authenticationForm-actions {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    margin-top: 8px;
+}
+
+.uc-authenticationForm-facebookLogin,
+.uc-authenticationForm-oneLoginInfo {
+    margin: 20px 0 0 0;
+    color: rgb(48, 51, 57);
+    font-size: 14px;
+    text-align: center;
+}
+
+.uc-authenticationForm-facebookLogin {
+    font-size: 12px;
+    line-height: 1.33em;
+    color: rgb(169, 175, 182);
+    font-family: "Compass Sans", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+/* Kind of brittle, but this value makes the modal the same height in OneLogin and regular modes */
+
+.uc-authenticationForm-oneLoginInfo {
+    margin-bottom: 31px;
+    font-size: 14px;
+    line-height: 1.5em;
+    color: rgb(62, 66, 71);
+    font-family: "Compass Sans", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+@media (max-width: 689px) {
+    .uc-authenticationForm-oneLoginInfo {
+        font-size: 14px;
+    }
+}
+
+.uc-authenticationForm-legalAgreement {
+    margin-top: 8px;
+    color: rgb(169, 175, 182);
+    font-size: 11px;
+    text-align: center;
+}
+
+.uc-authenticationForm-legalAgreement .cx-textLink--brand {
+    /* The font-size here is too small for bold links, so just override the style. */
+    font-weight: normal;
+    /* stylelint-disable-line property-blacklist */
+}
+
+.uc-authenticationForm-footer {
+    margin-top: 20px;
+    border-top: 1px solid rgba(48, 51, 57, 0.15);
+    padding-top: 10px;
+    color: rgb(48, 51, 57);
+    font-size: 14px;
+    text-align: center;
+}
+
+.uc-popover {
+    position: absolute;
+    /* Popovers should restrict size, default to scrolling. */
+    max-width: 600px;
+    max-height: 400px;
+    /* Popovers need overflow: visible in order to display poptip arrows properly */
+    overflow: visible;
+    /* Popovers should be placed pretty high */
+    z-index: 1000;
+    background-color: rgb(255, 255, 255);
+    -webkit-box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Override uc-popover styles when it's a cx poptip component */
+
+.uc-popover.cx-poptip {
+    background-color: rgba(0, 0, 0, 0.85);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+work-with-agent-modal {
+    display: block;
+    height: 100%;
+    background-color: rgb(244, 245, 249);
+}
+
+.workWithAgentModal-inputGroup {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.workWithAgentModal-inputGroup .cx-formElement {
+    -ms-flex-preferred-size: 50%;
+    flex-basis: 50%;
+}
+
+.workWithAgentModal-inputGroup .cx-formElement+.cx-formElement {
+    margin-left: 15px;
+}
+
+.workWithAgentModal-inputGroup+.cx-formElement,
+.workWithAgentModal-form .cx-brandModal-body>.cx-formElement+.cx-formElement {
+    margin-top: 15px;
+}
+
+.workWithAgentModal-customerInterestTypes {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.workWithAgentModal-customerInterestTypes .cx-formElement {
+    cursor: pointer;
+}
+
+.workWithAgentModal-form .cx-formElement-errorMessage {
+    margin-bottom: -5px;
+    line-height: 12px;
+}
+
+.ie11Deprecator--banner {
+    padding: 8px;
+    background-color: rgb(244, 198, 80);
+    text-align: center;
+}
+
+.ie11Deprecator--banner a {
+    color: inherit;
+}
